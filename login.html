@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
+    <title>Hero's Grimory</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <figure>
+        <figcaption>
+            <div class="image">
+                <img src="images/_2.jpg" alt="Imagem de exemplo">
+            </div>
+        </figcaption>
+    </figure>
+    <p id="text1">Seja Bem-Vindo</p>
+    <h1>RETORNAR</h1>
+    <a href="index.html"> 
+        <button class="Return">
+            <img src="images/return-icon.png" class="btn-return" alt="Return Icon">
+        </button>
+    </a>
+    <p class="text2">Por favor, entre em sua conta</p>
+    
+    <form action="/submit" method="post" class="formulario">
+        <div class="inputBox">
+            <label for="nome" class="labelInput">NICKNAME</label>
+            <input type="text" name="nome" id="nome" class="inputUser" required>
+        </div>
+
+        <!-- Novo contêiner flex para SENHA e CONFIRMAR SENHA -->
+        <div class="password-container">
+            <div class="inputBoxS">
+                <label for="senha" class="labelInputS">SENHA</label>
+                <input type="password" name="senha" id="senha" class="inputUserS" required>
+            </div>
+        </div>
+        <input type="submit" name="submit" id="submit" value="Entrar">
+    </form>
+    <button class="cadastrar">
+        <p>Ainda não tem uma conta? | <a href="cadastro.html">Cadastre-se</a></p>
+    </button>
+    
+    <div class="yellow-rect"></div>
+</body>
+</html>
