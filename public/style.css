@@ -1,0 +1,132 @@
+body {
+    background: #fff;
+    height: 832px;
+    margin: 0;
+    font-family: 'Varela Round', sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+nav {
+    background: #fff;
+    height: 73px;
+    width: 100%;
+    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+}
+
+label.logo {
+    color: rgb(255, 187, 0);
+    font-size: 20px;
+    line-height: 80px;
+    padding: 0 21px;
+    font-weight: bold;
+}
+
+nav ul {
+    float: right;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 73px;
+    margin: 0 40px;
+}
+
+nav ul li a {
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+    padding: 7px 20px;
+    border-radius: 14px;
+    text-transform: uppercase;
+}
+
+a.active, a:hover {
+    background: #020326;
+    color: #fff;
+    transition: .5s;
+}
+
+#container {
+    position: relative;
+    text-align: center;
+}
+
+.figure-menu {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+.hero-image {
+    width: 100%;
+    display: block;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    color: white;
+    text-align: center;
+}
+
+.text1 {
+    position: absolute;
+    top: 150px; /* Define o y = 210px */
+    left: 127px; /* Define o x = 127px */
+    font-size: 48px;
+    font-family: 'Inika';
+    font-weight: bold;
+    text-align: left;
+}
+
+.text2 {
+    position: absolute;
+    top: 268px; /* Define o y = 338px */
+    left: 117px; /* Define o x = 127px */
+    width: 608px; /* Define a largura de 608px */
+    height: 220px; /* Define a altura de 220px */
+    font-size: 26px;
+    font-family: 'Asap';
+    text-align: left;
+    padding: 10px; /* Adiciona espaçamento interno */
+    box-sizing: border-box; /* Garante que o padding seja incluído nas dimensões */
+}
+
+#container button {
+    position: absolute;
+    top: 60%;
+    left: 307px;
+    transform: translateX(-50%);
+    width: 347px;
+    height: 80px;
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255);
+    color: #020326;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    font-family: 'Inika';
+    font-weight: bold;
+    font-size: 32px;
+    text-align: left;
+}
+
+#container button:hover {
+    background-color: #020326;
+    color: rgb(255, 255, 255);
+    transition: .5s;
+}
