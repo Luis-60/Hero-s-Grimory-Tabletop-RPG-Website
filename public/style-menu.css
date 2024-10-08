@@ -1,7 +1,7 @@
 body {
-    background: #fff;
-    height: 832px;
+    padding: 0;
     margin: 0;
+    box-sizing: border-box;
     font-family: 'Varela Round', sans-serif;
 }
 
@@ -13,49 +13,72 @@ body {
     box-sizing: border-box;
 }
 
-nav {
-    background: #fff;
-    height: 73px;
+/* Navbar */
+.nav {
+    height: 65px;
     width: 100%;
-    box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Para garantir que o navbar esteja acima da imagem */
+    background-color: rgba(0, 0, 0, 0.0); /* Fundo semitransparente */
+    line-height: 65px;
+    text-align: center;
 }
 
-label.logo {
-    color: rgb(255, 187, 0);
-    font-size: 20px;
-    line-height: 80px;
-    padding: 0 21px;
-    font-weight: bold;
+.nav div.logo {
+    padding-top: 1rem;
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
 }
 
-nav ul {
+.nav div.main_list {
+    height: 65px;
     float: right;
-    margin-right: 20px;
 }
 
-nav ul li {
-    display: inline-block;
-    line-height: 73px;
-    margin: 0 40px;
+.nav div.main_list ul {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-nav ul li a {
-    color: rgb(0, 0, 0);
-    font-size: 17px;
-    padding: 7px 20px;
-    border-radius: 14px;
-    text-transform: uppercase;
+.nav div.main_list ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
 }
 
-a.active, a:hover {
-    background: #020326;
-    color: #fff;
-    transition: .5s;
+.nav div.main_list ul li a {
+    color: white;
+    font-size: 18px;
+}
+
+.nav div.main_list ul li a:hover {
+    text-decoration: underline;
 }
 
 #container {
     position: relative;
     text-align: center;
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px){
+    .container{
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .navTrigger{
+        display: block;
+    }
 }
 
 .figure-menu {
@@ -85,7 +108,7 @@ a.active, a:hover {
 
 .text1 {
     position: absolute;
-    top: 150px; /* Define o y = 210px */
+    top: 210px; /* Define o y = 210px */
     left: 127px; /* Define o x = 127px */
     font-size: 48px;
     font-family: 'Inika';
@@ -95,7 +118,7 @@ a.active, a:hover {
 
 .text2 {
     position: absolute;
-    top: 268px; /* Define o y = 338px */
+    top: 338px; /* Define o y = 338px */
     left: 117px; /* Define o x = 127px */
     width: 608px; /* Define a largura de 608px */
     height: 220px; /* Define a altura de 220px */
@@ -106,7 +129,8 @@ a.active, a:hover {
     box-sizing: border-box; /* Garante que o padding seja incluído nas dimensões */
 }
 
-#container button {
+/*Botão Página de Raça*/
+#container a.raca{
     position: absolute;
     top: 60%;
     left: 307px;
@@ -123,10 +147,30 @@ a.active, a:hover {
     font-weight: bold;
     font-size: 32px;
     text-align: left;
+    display: flex;
 }
 
-#container button:hover {
+#container a.raca:hover {
     background-color: #020326;
     color: rgb(255, 255, 255);
     transition: .5s;
+}
+
+@media screen and (max-width: 768px) {
+    #container a.raca {
+        width: 90%; /* Botão ocupa mais espaço em telas menores */
+        font-size: 24px; /* Tamanho do texto reduzido */
+        height: 60px; /* Altura do botão reduzida */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #container a.raca {
+        font-size: 18px; /* Tamanho do texto ainda menor */
+        height: 50px; /* Altura ainda menor */
+    }
+}
+.footer{
+    height: 70px;
+    background-color: #100D0B;
 }

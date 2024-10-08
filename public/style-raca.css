@@ -12,7 +12,6 @@ button:hover{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: #f1f1f1
 }
 
 .container .progress-container{
@@ -30,7 +29,6 @@ button:hover{
     height: 30px;
     border-radius: 30px;
     background-color: white;
-    box-shadow: 3px 4px 5px 0px rgba(204 185 185 / .75);
 }
 
 .container .progress-container .progress-bar span {
