@@ -13,14 +13,14 @@
     <label>Elfo
         <input type="radio" name="raca" value="Elfo" oninput="TrocarRaca()">
     </label><br>
-    <label>Halfling
+    <!-- <label>Halfling
         <input type="radio" name="raca" value="Halfling" oninput="TrocarRaca()">
-    </label><br>
+    </label><br> -->
     <label>Humano
         <input type="radio" name="raca" value="Humano" oninput="TrocarRaca()">
     </label><br>
-    <label>Draconato
-        <input type="radio" name="raca" value="Draconato" oninput="TrocarRaca()">
+    <!-- <label>Draconato -->
+        <!-- <input type="radio" name="raca" value="Draconato" oninput="TrocarRaca()">
     </label><br>
     <label>Gnomo
         <input type="radio" name="raca" value="Gnomo" oninput="TrocarRaca()">
@@ -33,74 +33,88 @@
     </label><br>
     <label>Tiefling
         <input type="radio" name="raca" value="Tiefling" oninput="TrocarRaca()">
-    </label><br>
+    </label><br> -->
 
-    <p id="raca">Anão</p>
-    <p>HABILIDADES</p>
-    <label for="hab">Escolha um método de Cálculo de Habilidades</label>
-    <select id="hab" name="hab">
-        <option value="0" selected disabled>Selecione uma Opção</option>
-        <option value="1">Compra de Pontos</option>
-        <option value="2">Valores Predeterminados</option>
-        <option value="3">Tirada de Dados</option>
-    </select>
 
-    <!-- Barra de Progresso -->
-    <div class="container">
-        <div class="progress-container">
-            <h4 id="forca">Força</h4>
-            <button class="sub">-</button>
-            <button class="add">+</button>
-            <div class="progress-bar">
-                <span data-width="0">0</span>
+    <div class="scroll">
+        <p id="raca">Anão</p>
+        <p>HABILIDADES</p>
+        <label for="hab">Escolha um método de Cálculo de Habilidades</label>
+        <select id="hab" name="hab">
+            <option value="0" selected disabled>Selecione uma Opção</option>
+            <option value="1">Compra de Pontos</option>
+            <option value="2">Valores Predeterminados</option>
+            <option value="3">Tirada de Dados</option>
+        </select>
+
+
+        <!-- Barra de Progresso -->
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="forca">Força</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="progress-container">
-            <h4 id="constituicao">Constituição</h4>
-            <button class="sub">-</button>
-            <button class="add">+</button>
-            <div class="progress-bar">
-                <span data-width="0">0</span>
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="constituicao">Constituição</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="progress-container">
-            <h4 id="destreza">Destreza</h4>
-            <button class="sub">-</button>
-            <button class="add">+</button>
-            <div class="progress-bar">
-                <span data-width="0">0</span>
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="destreza">Destreza</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="progress-container">
-            <h4 id="inteligencia">Inteligência</h4>
-            <button class="sub">-</button>
-            <button class="add">+</button>
-            <div class="progress-bar">
-                <span data-width="0">0</span>
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="inteligencia">Inteligência</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="progress-container">
-            <h4 id="carisma">Carisma</h4>
-            <button class="sub">-</button>
-            <button class="add">+</button>
-            <div class="progress-bar">
-                <span data-width="0">0</span>
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="sabedoria">Sabedoria</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
             </div>
         </div>
+
+        <div class="container">
+            <div class="progress-container">
+                <h4 id="carisma">Carisma</h4>
+                <button class="sub">-</button>
+                <button class="add">+</button>
+                <div class="progress-bar">
+                    <span data-width="0">0</span>
+                </div>
+            </div>
+        </div>
+        <p id="value-cb1"></p>
     </div>
-<p id="value-cb1">EEE POTENCIA</p>
 
 <script src="script.js"></script>
 </body>
