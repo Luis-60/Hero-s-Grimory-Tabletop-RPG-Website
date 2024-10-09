@@ -158,7 +158,7 @@ body {
 
 @media screen and (max-width: 768px) {
     #container a.raca {
-        width: 90%; /* Botão ocupa mais espaço em telas menores */
+        width: 30%; /* Botão ocupa mais espaço em telas menores */
         font-size: 24px; /* Tamanho do texto reduzido */
         height: 60px; /* Altura do botão reduzida */
     }
@@ -168,6 +168,20 @@ body {
     #container a.raca {
         font-size: 18px; /* Tamanho do texto ainda menor */
         height: 50px; /* Altura ainda menor */
+    }
+}
+@media screen and (max-width: 1368px) and (min-width: 768px) {
+    #container a.raca {
+        top: 80vh;
+        font-size: 28px; /* Tamanho do texto ainda menor */
+        height: 75px; /* Altura ainda menor */
+        width: 350px; /* Altura ainda menor */
+    }
+    .text1{
+        top: 25vh
+    }
+    .text2{
+        top: 45vh
     }
 }
 .footer{

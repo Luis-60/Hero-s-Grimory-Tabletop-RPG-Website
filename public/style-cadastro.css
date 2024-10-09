@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
-body, html {
+
+body,
+html {
     margin: 0;
     padding: 0;
     height: 100%;
@@ -8,26 +10,34 @@ body, html {
 
 /* Estilização do container da imagem */
 .image {
-    width: 490px;    /* Largura fixa de 490px */
-    height: 768px;   /* Altura fixa de 768px */
+    width: 100vh;
+    /* Largura fixa de 490px */
+    height: 100vh;
+    /* Altura fixa de 768px */
     position: absolute;
-    left: 0;         /* Alinhado ao lado esquerdo */
-    top: 50%;        /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta para centralizar corretamente verticalmente */
+    left: 0;
+    /* Alinhado ao lado esquerdo */
+    top: 50%;
+    /* Centraliza verticalmente */
+    transform: translateY(-50%);
+    /* Ajusta para centralizar corretamente verticalmente */
 }
 
 /* Configuração da imagem */
 img {
-    width: 100%;     /* A imagem ocupará toda a largura do container */
-    height: 100%;    /* A imagem ocupará toda a altura do container */
-    object-fit: cover; /* Mantém a proporção da imagem enquanto preenche o container */
+    width: 76%;
+    /* A imagem ocupará toda a largura do container */
+    height: 100%;
+    /* A imagem ocupará toda a altura do container */
+    object-fit: cover;
+    /* Mantém a proporção da imagem enquanto preenche o container */
 }
 
 #text1 {
     position: absolute;
     display: inline;
     float: left;
-    left: 608px;
+    left: 80vh;
     top: 80px;
     font-size: 50px;
     font-family: 'Inika';
@@ -37,7 +47,7 @@ img {
 h1 {
     position: absolute;
     top: 45px;
-    margin-left: 670px;
+    left: 86vh;
     font-size: 20px;
     color: #3E3E3E;
     font-weight: bold;
@@ -53,7 +63,7 @@ h1 {
     position: absolute;
     background-color: #f4f4f4;
     top: 45px;
-    margin-left: 616px;
+    left: 80vh;
     width: 41px;
     height: 41px;
     border-radius: 7px;
@@ -71,35 +81,23 @@ h1 {
     width: 214px;
     height: 3px;
     top: 190px;
-    margin-left: 612px;
+    left: 80vh;
     background-color: #FCD05B;
-}
-
-#text2 {
-    font-family: "Asap", sans-serif;
-    font-size: 24px;
-    position: absolute;
-    top: 100px; /* Ajuste conforme necessário */
-    left: 610px; /* Ajuste conforme necessário */
-}
-
-.text2 {
-    font-family: "Asap", sans-serif;
-    font-size: 24px;
-    position: absolute;
-    top: 900px; /* Ajuste conforme necessário */
-    left: 610px; /* Ajuste conforme necessário */
 }
 
 .formulario {
     position: absolute;
-    top: 240px; /* Ajuste conforme necessário */
-    left: 610px; /* Ajuste conforme necessário */
-    width: 300px; /* Ajuste conforme necessário */
+    top: 240px;
+    /* Ajuste conforme necessário */
+    left: 80vh;
+    /* Ajuste conforme necessário */
+    width: 300px;
+    /* Ajuste conforme necessário */
 }
 
 .inputBox {
-    margin-bottom: 60px; /* Espaço de 100px entre os inputs */
+    margin-bottom: 60px;
+    /* Espaço de 100px entre os inputs */
 }
 
 .inputUser {
@@ -115,6 +113,7 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 .labelInput {
     font-family: 'Inika';
     font-weight: bold;
@@ -125,7 +124,7 @@ h1 {
 }
 
 #submit {
-    
+
     width: 252px;
     height: 60px;
     background-color: #020326;
@@ -136,15 +135,15 @@ h1 {
     cursor: pointer;
     font-family: 'Inika';
     margin-top: 40px;
-    
+
 }
 
 #submit:hover {
     background-color: #555;
 }
 
-.labelInputS{
-    font-family:'Inika';
+.labelInputS {
+    font-family: 'Inika';
     font-weight: bold;
     font-size: 20px;
     color: #000000;
@@ -156,22 +155,22 @@ h1 {
 /* Estiliza o contêiner para os campos de senha */
 .password-container {
     display: flex;
-    gap: 40px; /* Espaço entre SENHA e CONFIRMAR SENHA */
-}
-
-.inputBoxS {
-    flex: 1; /* Faz os campos se ajustarem de forma proporcional */
+    gap: 40px;
+    /* Espaço entre SENHA e CONFIRMAR SENHA */
 }
 
 .cadastrar {
     position: absolute;
     width: 411px;
-    height: 73px; /* Ajusta a altura conforme o conteúdo */
+    height: 73px;
+    /* Ajusta a altura conforme o conteúdo */
     background-color: #F4F4F4;
-    color: #000000; /* Cor do texto */
+    color: #000000;
+    /* Cor do texto */
     text-align: center;
     top: 580px;
-    left: 610px; /* Ajuste conforme necessário */
+    left: 80vh;
+    /* Ajuste conforme necessário */
     border: none;
     border-radius: 14px;
 }
@@ -183,11 +182,42 @@ h1 {
 }
 
 .cadastrar a {
-    color: #FCD05B; /* Cor do link */
-    text-decoration: none; /* Remove o sublinhado do link */
+    color: #FCD05B;
+    /* Cor do link */
+    text-decoration: none;
+    /* Remove o sublinhado do link */
     font-weight: bold;
 }
 
 .cadastrar a:hover {
-    text-decoration: underline; /* Adiciona sublinhado no hover se desejado */
+    text-decoration: underline;
+    /* Adiciona sublinhado no hover se desejado */
+}
+
+@media screen and (max-width: 1368px) and (min-width: 768px) {
+    #text1 {
+        top: 8vh;
+
+    }
+    .yellow-rect{
+        top: 25vh;
+    }
+    #submit{
+        top: 70vh;
+        font-size: 20px;
+        height: 50px;
+        width: 140px
+    }
+    .formulario{
+        top: 30vh;
+    }
+    .cadastrar{
+        top: 80vh;
+    }
+    .inputBox{
+        margin-bottom: 30px
+    }
+    h1{
+        left: 88vh
+    }
 }
