@@ -2,9 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <script src="public/Dados.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/style-Dados.css">
+    <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <title>Rolagem de Dados</title>
+    <script src="public/script.js" defer></script>
 </head>
 <body>
     <main id="container">
@@ -12,13 +15,33 @@
             <img src="public/images/background-dados.jpg" alt="Pedestal" class="Pedestal">
             <figcaption class="text-overlay">
                 <a href="index.html">
-                    <button class="RETURN">RETURN</button>
+                    <button class="RETURN"><b>RETURN</b></button>
                 </a>
-                <button class="Rolar">Rolar</button>
-                <div class="text1">VOCÊ TEM DADO EM CASA?</div>
-                <div class="text2">Teste o nosso simulador de dados.</div>
-                </figcaption>
-            
+                <button class="Rolar" onclick="Rolar()"><b>Rolar</b></button>
+                <div class="text1"><b>VOCÊ TEM DADO EM CASA?</b></div>
+                <div class="text2" id="Log">Teste o nosso simulador de dados. <br>Log: </div>
+                <div class="blur-container"></div>
+                <div class="number" id="numero"></div>
+                <div class="combo-container1">
+                    <label for="combo-box">Tipo de rolagem:</label>
+                    <select id="combo-box">
+                        <option value="opcao1">Tentativa</option>
+                        <option value="opcao2">Dano</option>
+                    </select>
+                </div>
+                <div class="combo-container2">
+                    <label for="combo-box">Modificadores:</label>
+                    <select id="combo-box2">
+                        <option value="stats1">N/A</option>
+                        <option value="stats2">Força</option>
+                        <option value="stats3">Inteligência</option>
+                        <option value="stats4">Sabedoria</option>
+                        <option value="stats5">Carisma</option>
+                        <option value="stats6">Constituição</option>
+                        <option value="stats7">Destreza</option>
+                    </select>
+                </div>
+            </figcaption>
         </figure>
     </main>
 </body>
