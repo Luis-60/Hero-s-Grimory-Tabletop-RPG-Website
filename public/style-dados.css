@@ -1,0 +1,101 @@
+*{
+    margin: 0;
+    overflow: hidden;
+}
+
+.Pedestal {
+    width: 100%;
+    height: auto;
+}
+
+.text-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.5); /* Fundo semitransparente */
+    color: white;
+    text-align: center;
+}
+
+.RETURN {
+    position: absolute;
+    top: 2%;
+    left: 1.5%;
+    padding: 2px 10px;
+    background-color: #95BA8A;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+}
+.Rolar {
+    position: absolute;
+    top: 76%;
+    left: 49%;
+    padding: 10px 20px;
+    background-color: #95ba8aa9;
+    color: rgb(0, 0, 0);
+    border: none;
+    cursor: pointer;
+    z-index: 20;
+    font-family: 'MedievalSharp';
+    font-size: large;
+}
+.text1 {
+    position: absolute;
+    top: 210px; /* Define o y = 210px */
+    left: 72%; /* Define o x = 127px */
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+}
+
+.text2 {
+    position: absolute;
+    top: 250px; /* Define o y = 338px */
+    left: 72%; /* Define o x = 127px */
+    font-size: 15px;
+    text-align: left;
+    padding: 10px; /* Adiciona espaçamento interno */
+    box-sizing: border-box; /* Garante que o padding seja incluído nas dimensões */
+    font-family: 'MedievalSharp';
+}
+.number {
+    position: absolute;
+    top: 40%;
+    left: 48%;
+    font-size:80px;
+    font-family: 'MedievalSharp';
+    background: linear-gradient(to bottom, #FFFFFF, #95BA8A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    z-index: 20;
+}
+.blur-container {
+    position: absolute;
+    display: inline-block;
+    top: 27%;
+    left: 38%;
+    padding: 130px 180px;
+    background: radial-gradient(circle, rgba(91, 145, 128, 0.61), rgba(255, 255, 255, 0));
+    border-radius: 10px;
+    z-index: 10;
+}
+.combo-container1{
+    position: absolute;
+    top: 30%;
+    left: 7%;
+    font-family: 'MedievalSharp';
+}
+.combo-container2{
+    position: absolute;
+    top: 40%;
+    left: 7%;
+    font-family: 'MedievalSharp';
+}
+
