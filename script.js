@@ -1,4 +1,5 @@
 const maxWidth = 15;
+const maxWidthRaca = 4;
 
 let forcaWidth = 0;
 let constituicaoWidth = 0;
@@ -6,42 +7,49 @@ let destrezaWidth = 0;
 let inteligenciaWidth = 0;
 let sabedoriaWidth = 0;
 let carismaWidth = 0;
+
+let forca = 0;
+let constituicao = 2;
+let destreza = 0;
+let inteligencia = 0;
+let sabedoria = 0;
+let carisma = 0;
+
 let valorPonto = 27; // Inicializa valorPonto com 27
 const ponto = document.getElementById('value-cb1');
 ponto.innerText = valorPonto; // Atualiza o texto do elemento
 
-// Função para atualizar as barras de progresso
 function atualizarBarras() {
     document.querySelectorAll('.progress-bar span').forEach(function(span) {
         let habilidade = span.closest('.progress-container').querySelector('h4').innerText.toLowerCase();
         
         switch(habilidade) {
-            case 'f':
+            case 'for':
                 span.setAttribute('data-width', forcaWidth);
                 span.style.width = (forcaWidth / maxWidth * 100) + '%';
                 span.innerText = forcaWidth;
                 break;
-            case 'co':
+            case 'con':
                 span.setAttribute('data-width', constituicaoWidth);
                 span.style.width = (constituicaoWidth / maxWidth * 100) + '%';
                 span.innerText = constituicaoWidth;
                 break;
-            case 'd':
+            case 'des':
                 span.setAttribute('data-width', destrezaWidth);
                 span.style.width = (destrezaWidth / maxWidth * 100) + '%';
                 span.innerText = destrezaWidth;
                 break;
-            case 'i':
+            case 'int':
                 span.setAttribute('data-width', inteligenciaWidth);
                 span.style.width = (inteligenciaWidth / maxWidth * 100) + '%';
                 span.innerText = inteligenciaWidth;
                 break;
-            case 's':
+            case 'sab':
                 span.setAttribute('data-width', sabedoriaWidth);
                 span.style.width = (sabedoriaWidth / maxWidth * 100) + '%';
                 span.innerText = sabedoriaWidth;
                 break;
-            case 'ca':
+            case 'car':
                 span.setAttribute('data-width', carismaWidth);
                 span.style.width = (carismaWidth / maxWidth * 100) + '%';
                 span.innerText = carismaWidth;
@@ -50,7 +58,44 @@ function atualizarBarras() {
     });
 }
 
-// Função para trocar a raça
+function atualizarBarrasRaca() {
+    document.querySelectorAll('.progress-bar-raca span').forEach(function(span) {
+        let habilidade = span.closest('.progress-container').querySelector('h4').innerText.toLowerCase();
+        
+        switch(habilidade) {
+            case 'for':
+                span.setAttribute('data-width', forca);
+                span.style.width = (forca / maxWidthRaca * 100) + '%';
+                span.innerText = forca;
+                break;
+            case 'con':
+                span.setAttribute('data-width', constituicao);
+                span.style.width = (constituicao / maxWidthRaca * 100) + '%';
+                span.innerText = constituicao;
+                break;
+            case 'des':
+                span.setAttribute('data-width', destreza);
+                span.style.width = (destreza / maxWidthRaca * 100) + '%';
+                span.innerText = destreza;
+                break;
+            case 'int':
+                span.setAttribute('data-width', inteligencia);
+                span.style.width = (inteligencia / maxWidthRaca * 100) + '%';
+                span.innerText = inteligencia;
+                break;
+            case 'sab':
+                span.setAttribute('data-width', sabedoria);
+                span.style.width = (sabedoria / maxWidthRaca * 100) + '%';
+                span.innerText = sabedoria;
+                break;
+            case 'car':
+                span.setAttribute('data-width', carisma);
+                span.style.width = (carisma / maxWidthRaca * 100) + '%';
+                span.innerText = carisma;
+                break;
+        }
+    });
+}
 function TrocarRaca() {
     const racaSelecionada = document.querySelector('input[name="raca"]:checked');
     
@@ -60,87 +105,40 @@ function TrocarRaca() {
         // Definindo valores de acordo com a raça selecionada
         switch (racaSelecionada.value) {
             case 'Anão':
-                forcaWidth = 0;
-                constituicaoWidth = 2; 
-                destrezaWidth = 0;
-                inteligenciaWidth = 0;
-                sabedoriaWidth = 0;
-                carismaWidth = 0;
+                forca = 0;
+                constituicao = 2; 
+                destreza = 0;
+                inteligencia = 0;
+                sabedoria = 0;
+                carisma = 0;
                 break;
             case 'Elfo':
-                forcaWidth = 0;
-                constituicaoWidth = 0;
-                destrezaWidth = 2;
-                inteligenciaWidth = 0;
-                sabedoriaWidth = 0;
-                carismaWidth = 0;
+                forca = 0;
+                constituicao = 0;
+                destreza = 2;
+                inteligencia = 0;
+                sabedoria = 0;
+                carisma = 0;
                 break;
-            // case 'Halfling':
-            //     forcaWidth = 0;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 2;
-            //     inteligenciaWidth = 0;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 0;
-            //     break;
             case 'Humano':
-                forcaWidth = 1;
-                constituicaoWidth = 1;
-                destrezaWidth = 1;
-                inteligenciaWidth = 1;
-                sabedoriaWidth = 1;
-                carismaWidth = 1;
+                forca = 1;
+                constituicao = 1;
+                destreza = 1;
+                inteligencia = 1;
+                sabedoria = 1;
+                carisma = 1;
                 break;
-            // case 'Draconato':
-            //     forcaWidth = 2;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 1;
-            //     inteligenciaWidth = 0;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 0;
-            //     break;
-            // case 'Gnomo':
-            //     forcaWidth = 0;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 0;
-            //     inteligenciaWidth = 2;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 0;
-            //     break;
-            // case 'Meio-Elfo':
-            //     forcaWidth = 0;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 0;
-            //     inteligenciaWidth = 0;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 2;
-            //     break;
-            // case 'Meio-Orc':
-            //     forcaWidth = 1;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 0;
-            //     inteligenciaWidth = 0;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 0;
-            //     break;
-            // case 'Tiefling':
-            //     forcaWidth = 0;
-            //     constituicaoWidth = 0;
-            //     destrezaWidth = 0;
-            //     inteligenciaWidth = 0;
-            //     sabedoriaWidth = 0;
-            //     carismaWidth = 0;
-            //     break;
         }
-        
-        // Atualizar as barras de progresso
-        atualizarBarras();
+
+        atualizarBarrasRaca(); // Atualiza as barras de raça com os valores definidos
     }
 }
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
     atualizarBarras(); // Atualiza as barras inicialmente
+    atualizarBarrasRaca(); // Atualiza as barras da raça inicialmente
+
     document.getElementById('hab').selectedIndex = -1; // Define a combobox como nula
 });
     // Configurar os botões de adicionar e subtrair para cada barra de progresso
@@ -193,27 +191,44 @@ function updateProgressBar(span, increment) {
     span.innerText = width; // Atualiza o texto exibido
 }
 
+// Função para atualizar a barra de progresso de raça
+function updateProgressBarRaca(span, increment) {
+    let width = parseInt(span.getAttribute('data-width')) + increment;
+    
+    // Limitar o valor ao tamanho máximo
+    if (width > maxWidthRaca) {
+        width = maxWidthRaca;
+    } else if (width < 0) {
+        width = 0;
+    }
+
+    // Atualizar o valor de data-width, a largura da barra e o texto
+    span.setAttribute('data-width', width);
+    span.style.width = (width / maxWidthRaca * 100) + '%';
+    span.innerText = width;
+}
+
 // Função para atualizar as variáveis de habilidade
 function atualizarHabilidade(span, increment) {
     let habilidade = span.closest('.progress-container').querySelector('h4').innerText.toLowerCase();
     
     switch (habilidade) {
-        case 'f':
+        case 'for':
             forcaWidth += increment;
             break;
-        case 'co':
+        case 'con':
             constituicaoWidth += increment;
             break;
-        case 'd':
+        case 'des':
             destrezaWidth += increment;
             break;
-        case 'i':
+        case 'int':
             inteligenciaWidth += increment;
             break;
-        case 's':
+        case 'sab':
             sabedoriaWidth += increment;
             break;
-        case 'ca':
+        case 'car':
             carismaWidth += increment;
             break;
     }
@@ -254,7 +269,7 @@ document.getElementById('hab').addEventListener('change', function() {
 // Função de rolar atributos
 function rolarAtributos(){
     // Definir a ordem das habilidades
-    const habilidades = ['força', 'constituição', 'destreza', 'inteligência', 'sabedoria', 'carisma'];
+    const habilidades = ['forca', 'constituicao', 'destreza', 'inteligencia', 'sabedoria', 'carisma'];
     
     habilidades.forEach(function(habilidade, index) {
         // Rolar 4d6 e descartar o menor
@@ -267,20 +282,22 @@ function rolarAtributos(){
         let DMenor = Math.min(...dados);
         let DTotal = dados.reduce((a, b) => a + b, 0) - DMenor;
 
+         // Limitar o valor máximo a 15
+        DTotal = Math.min(DTotal, 15);
         console.log(`${habilidade}: ${DTotal}`);
 
         // Atualizar a variável correspondente
         switch (habilidade) {
-            case 'força':
+            case 'forca':
                 forcaWidth = DTotal;
                 break;
-            case 'constituição':
+            case 'constituicao':
                 constituicaoWidth = DTotal;
                 break;
             case 'destreza':
                 destrezaWidth = DTotal;
                 break;
-            case 'inteligência':
+            case 'inteligencia':
                 inteligenciaWidth = DTotal;
                 break;
             case 'sabedoria':
