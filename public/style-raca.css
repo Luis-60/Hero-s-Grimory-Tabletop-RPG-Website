@@ -30,6 +30,24 @@ button:hover {
     cursor: pointer;
 }
 
+#raca{
+    font-family: MedievalSharp, bold;
+    font-size: 78px;
+    margin: 10px;
+    color: white
+}
+
+#metodo{
+    font-family: MedievalSharp, bold;
+    font-size: 32px;
+    color: white
+}
+p{
+    margin: 0px;
+    font-family: Asap;
+    font-size: 16px;
+    color: white;
+}
 .container {
     height: auto;
     display: flex;
@@ -119,6 +137,8 @@ button:hover {
 }
 
 .progress-bar-raca {
+    display: flex;
+    justify-items: center;
     position: relative;
     width: 50px;
     height: 14px;
@@ -144,3 +164,67 @@ button:hover {
     background: #B98556;
     transition: width .5s linear;
 }
+@media screen and (max-width:1368px) and (min-width: 768px){
+    div.scroll{
+        width: 70vh;
+        height: 85vh
+    }
+    .progress-bar-raca{
+        width: 40px;
+        right: 50px
+    }
+    .container .progress-container .progress-bar {
+        width: 250px;
+        top: 6px
+    }
+    p{
+        font-size: 13px
+    }
+    #raca{
+        font-size: 48px;
+    }
+    #metodo{
+        font-size: 24px
+    }
+
+}
+
+.bar-wrapper{
+    flex-grow: 1;
+}
+
+.values-atributes {
+    position: absolute;
+    left: 15px;
+    font-family: MedievalSharp;
+    color: #B98556;
+    font-size: 20px;
+    top: 10px
+}
+
+.grid-molde{
+    position: relative;
+    display: grid;
+    justify-content: space-evenly;
+    gap: 62px;
+    top: 7%;
+    left: -41.8%;
+    pointer-events: none;
+}
+
+.grid-raca{
+    
+    position: absolute;
+    display: grid;
+    justify-content: space-evenly;
+    gap: 80px;
+    top: 8%;
+    left: 3%
+}
+
+.grid-raca .raca:hover{
+    transition: transform 0.2s ease; 
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
