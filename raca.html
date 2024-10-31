@@ -5,41 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="public/style-raca.css">
     <link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
     <title>Raça</title>
 </head>
 <body>
-        <input type="radio" name="raca" value="Anão" oninput="TrocarRaca()">
-    </label><br>
-    <label>Elfo
-        <input type="radio" name="raca" value="Elfo" oninput="TrocarRaca()">
-    </label><br>
-    <!-- <label>Halfling
-        <input type="radio" name="raca" value="Halfling" oninput="TrocarRaca()">
-    </label><br> -->
-    <label>Humano
-        <input type="radio" name="raca" value="Humano" oninput="TrocarRaca()">
-    </label><br>
-    <!-- <label>Draconato -->
-        <!-- <input type="radio" name="raca" value="Draconato" oninput="TrocarRaca()">
-    </label><br>
-    <label>Gnomo
-        <input type="radio" name="raca" value="Gnomo" oninput="TrocarRaca()">
-    </label><br>
-    <label>Meio-Elfo
-        <input type="radio" name="raca" value="Meio-Elfo" oninput="TrocarRaca()">
-    </label><br>
-    <label>Meio-Orc
-        <input type="radio" name="raca" value="Meio-Orc" oninput="TrocarRaca()">
-    </label><br>
-    <label>Tiefling
-        <input type="radio" name="raca" value="Tiefling" oninput="TrocarRaca()">
-    </label><br> -->
-
-
+    
+    <div class="grid-raca">
+        <input type="image" src="/public/images/anao.png" name="raca" class="raca" value="Anão" oninput="TrocarRaca()">
+        
+        <input type="image" src="/public/images/elfo.png" name="raca" class="raca" value="Elfo" oninput="TrocarRaca()">
+        <input type="image" src="/public/images/humano.png" name="raca" class="raca" value="Humano" oninput="TrocarRaca()">
+    </div>
+    <div class="grid-molde">
+        <img src="/public/images/moldura.png">
+        <img src="/public/images/moldura.png">
+        <img src="/public/images/moldura.png">
+    </div>
     <div class="scroll">
-        <p id="raca">Anão</p>
-        <p>HABILIDADES</p>
-        <label for="hab">Escolha um método de Cálculo de Habilidades</label>
+        <h1 id="raca">Anão</h1>
+        <p>Personagens robustos e resistentes, mestres na mineração e forja,
+            conhecidos por sua lealdade ao clã.</p>
+        <h1 id="metodo">Método de Pontuação</h1>
         <select id="hab" name="hab">
             <option value="0" selected disabled>Selecione uma Opção</option>
             <option value="1">Compra de Pontos</option>
