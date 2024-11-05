@@ -96,43 +96,70 @@ function atualizarBarrasRaca() {
         }
     });
 }
-function TrocarRaca() {
-    const racaSelecionada = document.querySelector('input[name="raca"]:checked');
-    
-    if (racaSelecionada) {
-        document.getElementById('raca').innerText = racaSelecionada.value;
-    
-        // Definindo valores de acordo com a raça selecionada
-        switch (racaSelecionada.value) {
-            case 'Anão':
-                forca = 0;
-                constituicao = 2; 
-                destreza = 0;
-                inteligencia = 0;
-                sabedoria = 0;
-                carisma = 0;
-                break;
-            case 'Elfo':
-                forca = 0;
-                constituicao = 0;
-                destreza = 2;
-                inteligencia = 0;
-                sabedoria = 0;
-                carisma = 0;
-                break;
-            case 'Humano':
-                forca = 1;
-                constituicao = 1;
-                destreza = 1;
-                inteligencia = 1;
-                sabedoria = 1;
-                carisma = 1;
-                break;
-        }
+function TrocarRaca(element) {
+    const valorSelecionado = element.value;
+    // Atualiza o nome da raça no elemento com id="raca"
+    document.getElementById('raca').innerHTML = `<strong>${valorSelecionado.charAt(0)}</strong>${valorSelecionado.slice(1)}`;
 
-        atualizarBarrasRaca(); // Atualiza as barras de raça com os valores definidos
+    // Definindo valores de acordo com a raça selecionada
+    switch (valorSelecionado) {
+        case 'ANÃO':
+            document.getElementById('texto-raca').innerText = "Personagens robustos e resistentes, mestres na mineração e forja, conhecidos por sua lealdade ao clã.";
+            document.getElementById('subraca-1').innerText = "Anão da Colina";
+            document.getElementById('texto-subraca-1').innerText = "Como um anão da colina, você tem sentidos aguçados, maior intuição e notável resiliência. Os anões dourados de Faerûn, que vivem em seu poderoso reino ao sul do continente, são anões da colina, assim como os exilados Neidar e os depreciáveis Klar de Krynn, no cenário de Dragonlance.";
+            document.getElementById('subraca-2').innerText = "Anão da Montanha";
+            document.getElementById('texto-subraca-2').innerText = "Como um anão da montanha, você é forte e resistente, acostumados a uma vida difícil em terrenos difíceis. Você, provavelmente tem a descendência daqueles mais altos (para um anão) e tende a possuir uma coloração mais clara. Os anões do escudo do norte de Faerûn, bem como o clã governante Hylar e os clãs nobres Daewar de Dragonlance, são anões da montanha.";
+            document.body.style.backgroundImage = "url('public/images/backgroundanao.png')";
+            forca = 0;
+            constituicao = 2;
+            destreza = 0;
+            inteligencia = 0;
+            sabedoria = 0;
+            carisma = 0;
+            break;
+
+        case 'ELFO':
+            document.getElementById('texto-raca').innerText = "Seres místicos e humanóides, geralmente belos e ágeis, conhecidos por sua longevidade e habilidades mágicas.";
+            document.getElementById('subraca-1').innerText = "Alto Elfo";
+            document.getElementById('texto-subraca-1').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Truque: Você conhece um truque, à sua escolha, da lista de truques do mago. Inteligência é a habilidade usada para conjurar este truque. Idioma Adicional: Você pode falar, ler e escrever um idioma adicional à sua escolha.";
+            document.getElementById('subraca-2').innerText = "Elfo da Floresta";
+            document.getElementById('texto-subraca-2').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Pés Ligeiros: Seu deslocamento base de caminhada aumenta para 10,5 metros. Máscara da Natureza: Você pode tentar se esconder mesmo quando você está apenas levemente obscurecido por folhagem, chuva forte, neve caindo, névoa ou outro fenômeno natural.";
+            document.body.style.backgroundImage = "url('public/images/backgroundelfo.png')";
+            forca = 0;
+            constituicao = 0;
+            destreza = 2;
+            inteligencia = 0;
+            sabedoria = 0;
+            carisma = 0;
+            break;
+
+        case 'HUMANO':
+
+            document.getElementById('subraca').innerText = "";
+            document.getElementById('texto-raca').innerText = "São versáteis, adaptáveis e ambiciosos, capazes de se destacar em qualquer classe ou alinhamento.";
+            document.getElementById('texto-subraca-2').innerText = "";
+            document.getElementById('subraca-1').innerText = "";
+            document.getElementById('texto-subraca-1').innerText = "";
+            document.getElementById('subraca-2').innerText = "";
+            document.body.style.backgroundImage = "url('public/images/backgroundhumano.png')"; // Imagem para ANÃO
+            forca = 1;
+            constituicao = 1;
+            destreza = 1;
+            inteligencia = 1;
+            sabedoria = 1;
+            carisma = 1;
+            break;
     }
+
+    atualizarBarrasRaca(forca, constituicao, destreza, inteligencia, sabedoria, carisma); 
 }
+
+
+document.querySelectorAll('.raca').forEach(img => {
+    img.addEventListener('click', function() {
+        TrocarRaca(this);
+    });
+});
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
@@ -155,7 +182,7 @@ document.querySelectorAll('.progress-container').forEach(function(container) {
     addButton.addEventListener('click', function() {
         if (valorPonto > 0) {
             updateProgressBar(span, 1); // Aumenta em 1
-            atualizarHabilidade(span, 1); // Atualiza a variável da habilidade correspondente
+            atualizarHabilidade(span, 1); // Atualiza a iável da habilidade correspondente
             valorPonto--;
             ponto.innerText = valorPonto; // Atualiza o texto do elemento
         }
@@ -165,7 +192,7 @@ document.querySelectorAll('.progress-container').forEach(function(container) {
     subButton.addEventListener('click', function() {
         if (parseInt(span.getAttribute('data-width')) > 0) { // Verifica se o valor atual é maior que 0
             updateProgressBar(span, -1); // Diminui em 1
-            atualizarHabilidade(span, -1); // Atualiza a variável da habilidade correspondente
+            atualizarHabilidade(span, -1); // Atualiza a iável da habilidade correspondente
             valorPonto++; // Aumenta valorPonto ao subtrair
             ponto.innerText = valorPonto; // Atualiza a interface
         }
@@ -208,7 +235,7 @@ function updateProgressBarRaca(span, increment) {
     span.innerText = width;
 }
 
-// Função para atualizar as variáveis de habilidade
+// Função para atualizar as iáveis de habilidade
 function atualizarHabilidade(span, increment) {
     let habilidade = span.closest('.progress-container').querySelector('h4').innerText.toLowerCase();
     
@@ -286,7 +313,7 @@ function rolarAtributos(){
         DTotal = Math.min(DTotal, 15);
         console.log(`${habilidade}: ${DTotal}`);
 
-        // Atualizar a variável correspondente
+        // Atualizar a iável correspondente
         switch (habilidade) {
             case 'forca':
                 forcaWidth = DTotal;
