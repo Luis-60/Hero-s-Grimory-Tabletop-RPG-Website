@@ -7,6 +7,7 @@ body {
     background-position: center;
     /* Centraliza a imagem no fundo */
     background-repeat: no-repeat;
+    background-color: black;
     /* Evita que a imagem se repita */
     height: 100vh;
     /* Faz com que a altura do fundo seja igual à altura da viewport */
@@ -30,23 +31,52 @@ button:hover {
     cursor: pointer;
 }
 
+#subraca{
+    margin: 5px;
+    font-family: MedievalSharp, bold;
+    color: white;
+    margin-left: 0px;
+    font-size: 32px;
+}
+
+#subraca-2{
+    margin-bottom: 0px;
+    color: white;
+    font-size: 32px;
+    font-family: MedievalSharp;
+}
+#subraca-1{
+    margin: 0px;
+    text-align: left;
+    font-family: MedievalSharp, bold;
+    color: white;
+    font-size: 32px;
+}
+#raca strong{
+    font-size: 96px;
+}
+
 #raca{
     font-family: MedievalSharp, bold;
     font-size: 78px;
-    margin: 10px;
+    margin: 5px;
     color: white
 }
 
 #metodo{
     font-family: MedievalSharp, bold;
     font-size: 32px;
-    color: white
+    color: white;
+    margin: 5px;
+    margin-left: 0px;
+    margin-top: 30px
 }
 p{
     margin: 0px;
     font-family: Asap;
     font-size: 16px;
     color: white;
+    margin-right: 38px;
 }
 .container {
     height: auto;
@@ -54,7 +84,6 @@ p{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    gap: 15px;
 }
 
 /*Barra de progressso*/
@@ -178,10 +207,13 @@ p{
         top: 6px
     }
     p{
-        font-size: 13px
+        font-size: 14.2px
     }
     #raca{
         font-size: 48px;
+    }
+    #raca strong{
+        font-size: 78px;
     }
     #metodo{
         font-size: 24px
@@ -206,7 +238,7 @@ p{
     position: relative;
     display: grid;
     justify-content: space-evenly;
-    gap: 62px;
+    gap: 50px;
     top: 7%;
     left: -41.8%;
     pointer-events: none;
