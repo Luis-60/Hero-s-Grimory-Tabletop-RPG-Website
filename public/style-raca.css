@@ -16,21 +16,29 @@ body {
 }
 
 button {
-    position: relative;
     background-color: #B98556;
-    left: 110%;
     border: none;
     font-family: MedievalSharp, bold;
     border-radius: 100%;
     width: 20px;
     height: 20px;
-    top: -30px
 }
+
 
 button:hover {
     cursor: pointer;
 }
 
+.sub {
+    display: grid;
+    grid-column: 5
+}
+
+.add {
+    display: grid;
+    grid-column: 6;
+    margin: 0px;
+}
 #subraca{
     margin: 5px;
     font-family: MedievalSharp, bold;
@@ -71,24 +79,39 @@ button:hover {
     margin-left: 0px;
     margin-top: 30px
 }
-p{
+p {
     margin: 0px;
     font-family: Asap;
     font-size: 16px;
     color: white;
-    margin-right: 38px;
 }
+
+.raca-total{
+    grid-column: 7;
+    font-size: 20px;
+    font-family: MedievalSharp, bold;
+    color:#B98556
+}
+
 .container {
+    display: grid;
+    grid-template-columns: 50px 40px 325px 10px 10px;
     height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+    gap: 15px;
 }
+
 
 /*Barra de progressso*/
 .container .progress-container {
+    display: grid;
     margin-bottom: 15px;
+}
+
+.progress-raca-container{
+    display: grid;
+    width: 50px;
+    height: 14px;
+    margin-top: 5px;
 }
 
 .container .progress-container h4 {
@@ -96,21 +119,19 @@ p{
     letter-spacing: .5px;
 }
 
-.container .progress-container .progress-bar {
-    position: relative;
-    width: 348px;
+.progress-container .progress-bar {
+    display: grid;
+    grid-column: 3;
+    margin-top: 5px;
+    width: 328px;
     height: 14px;
     transform: skew(-20deg);
     background-color: rgb(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
-    transform-origin: top left;
-    top: 4px;
 }
 
-.container .progress-container .progress-bar span {
+.progress-bar span {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     color: rgb(0, 0, 0);
@@ -123,18 +144,13 @@ p{
 }
 
 .habilidades {
-    position: absolute;
-    left: 15px;
+    grid-column: 1;
     font-family: MedievalSharp;
     color: #B98556;
     font-size: 20px;
-}
-
-.sub button {
-    background-color: aqua;
-    width: 100%;
-    height: 100%;
-    font-size: 200px
+    width: 35px;
+    margin-left: 20px;
+    margin-top: 0px;
 }
 
 .scroll::-webkit-scrollbar {
@@ -166,23 +182,16 @@ p{
 }
 
 .progress-bar-raca {
-    display: flex;
-    justify-items: center;
-    position: relative;
+    display: grid;
+    grid-column: 2;
     width: 50px;
     height: 14px;
     transform: skew(-20deg);
     background-color: rgb(0, 0, 0, 0.35);
     backdrop-filter: blur(4px);
-    transform-origin: top left;
-    top: -9.6px;
-    right: 55px
 }
-
 .progress-bar-raca span {
     position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     color: rgb(0, 0, 0);
@@ -193,59 +202,53 @@ p{
     background: #B98556;
     transition: width .5s linear;
 }
-@media screen and (max-width:1368px) and (min-width: 768px){
-    div.scroll{
+@media screen and (max-width:1368px) and (min-width: 768px) {
+    div.scroll {
         width: 70vh;
         height: 85vh
     }
-    .progress-bar-raca{
+
+    .progress-bar-raca {
         width: 40px;
         right: 50px
     }
+
     .container .progress-container .progress-bar {
         width: 250px;
-        top: 6px
     }
-    p{
-        font-size: 14.2px
+
+    p {
+        font-size: 13px
     }
-    #raca{
+
+    #raca {
         font-size: 48px;
     }
-    #raca strong{
-        font-size: 78px;
-    }
-    #metodo{
+
+    #metodo {
         font-size: 24px
     }
 
 }
 
-.bar-wrapper{
-    flex-grow: 1;
-}
-
 .values-atributes {
-    position: absolute;
-    left: 15px;
     font-family: MedievalSharp;
     color: #B98556;
     font-size: 20px;
     top: 10px
 }
 
-.grid-molde{
+.grid-molde {
     position: relative;
     display: grid;
     justify-content: space-evenly;
-    gap: 50px;
+    gap: 62px;
     top: 7%;
     left: -41.8%;
     pointer-events: none;
 }
 
-.grid-raca{
-    
+.grid-raca {
     position: absolute;
     display: grid;
     justify-content: space-evenly;
@@ -254,9 +257,14 @@ p{
     left: 3%
 }
 
-.grid-raca .raca:hover{
-    transition: transform 0.2s ease; 
+.grid-raca .raca:hover {
+    transition: transform 0.2s ease;
     transform: scale(1.02);
     cursor: pointer;
+}
+
+.info{
+    margin-top: 4px;
+    grid-column: 4
 }
 
