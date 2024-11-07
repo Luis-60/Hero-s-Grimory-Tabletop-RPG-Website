@@ -4,8 +4,8 @@ We are just amateurs cursing our fourth period in the Informational Systems on U
 
 As a quick reminder, those are the GitHub pages of every developer that collaborates on the code.
 
-https://github.com/Luis-60
-https://github.com/Torres3111
-https://github.com/NycoDrade
+* https://github.com/Luis-60
+* https://github.com/Torres3111
+* https://github.com/NycoDrade
 
 We can even modify this README in the future.
