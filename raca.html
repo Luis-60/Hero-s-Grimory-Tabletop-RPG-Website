@@ -10,11 +10,11 @@
 </head>
 <body>
     
-    <div class="grid-raca"> 
-        <input type="image" src="/public/images/anao.png" name="raca" class="raca" value="ANÃO" oninput="TrocarRaca()">
+    <div class="grid-raca">
+        <input type="image" src="/public/images/anao.png" name="raca" class="raca" value="Anão" oninput="TrocarRaca()">
         
-        <input type="image" src="/public/images/elfo.png" name="raca" class="raca" value="ELFO" oninput="TrocarRaca()">
-        <input type="image" src="/public/images/humano.png" name="raca" class="raca" value="HUMANO" oninput="TrocarRaca()">
+        <input type="image" src="/public/images/elfo.png" name="raca" class="raca" value="Elfo" oninput="TrocarRaca()">
+        <input type="image" src="/public/images/humano.png" name="raca" class="raca" value="Humano" oninput="TrocarRaca()">
     </div>
     <div class="grid-molde">
         <img src="/public/images/moldura.png">
@@ -22,8 +22,8 @@
         <img src="/public/images/moldura.png">
     </div>
     <div class="scroll">
-        <h1 id="raca"><strong>A</strong>NÃO</h1>
-        <p id="texto-raca">Personagens robustos e resistentes, mestres na mineração e forja,
+        <h1 id="raca">Anão</h1>
+        <p>Personagens robustos e resistentes, mestres na mineração e forja,
             conhecidos por sua lealdade ao clã.</p>
         <h1 id="metodo">Método de Pontuação</h1>
         <select id="hab" name="hab">
@@ -33,7 +33,7 @@
             <option value="3">Tirada de Dados</option>
         </select>
 
-
+        
         <!-- Barra de Progresso -->
         <div class="container">
             <div class="habilidades">
@@ -157,30 +157,13 @@
                 </div>
             </div>
                 
+                    
                 <img class="info" src="/public/images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
                 <p class="raca-total">0</p>
-            </div>
         <p id="value-cb1"></p>
     </div>
-        <h1 id="subraca">Subraças</h1>
-        <h2 id="subraca-1">Anão da Colina</h2>
-            <p id="texto-subraca-1">Como um anão da colina, você tem sentidos aguçados,
-                maior intuição e  notável resiliência. Os anões
-                dourados de Faerûn, que vivem em seu  poderoso reino 
-                ao sul do continente, são anões da colina, assim como os
-                exilados Neidar e os depreciáveis Klar de Krynn,
-                no cenário de  Dragonlance.</p>
-        <h2 id="subraca-2">Anão da Montanha</h2>
-            <p id="texto-subraca-2">Como um anão da montanha, você é forte e resistente,
-                acostumados a uma  vida difícil em terrenos difíceis.
-                Você, provavelmente tem a  descendência daqueles mais
-                altos (para um anão) e tende a possuir uma  coloração
-                mais clara. Os anões do escudo do norte de Faerûn, bem
-                como o  clã governante Hylar e os clãs nobres Daewar de
-                Dragonlance, são anões  da montanha.</p>
-    
 
 <script src="script.js"></script>
 </body>
