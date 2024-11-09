@@ -1,7 +1,7 @@
 {
   "name": "hero-s-grimory-tabletop-rpg-website-main",
   "version": "1.0.0",
-  "main": "Cadastro.js",
+  "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js"
   },
