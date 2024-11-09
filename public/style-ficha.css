@@ -1,0 +1,294 @@
+#container {
+    position:relative;
+    width: 100%;
+    max-width: 595px;  /* Largura em pixels para ajustar a uma página A4 */
+    height: 842px;     /* Altura para ajustar a uma página A4 */
+    overflow: hidden;  /* Para evitar qualquer transbordamento */
+}
+
+.Ficha_de_Personagem {
+    width: 100%;
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.text-overlay {
+    position: absolute;
+    top: 200px;
+    left: 200px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0); /* Fundo semitransparente */
+    color: rgb(0, 0, 0);
+}
+
+.raca {
+    position: absolute;
+    top: -112px;
+    left: 70px; 
+    font-size: 12px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+.nome {
+    position: absolute;
+    top: -122px; 
+    left: -100px; 
+    font-size: 12px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.forca {
+    position: absolute;
+    top: -37px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.destreza {
+    position: absolute;
+    top: 27px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.constituicao {
+    position: absolute;
+    top: 93px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+
+.inteligencia {
+    position: absolute;
+    top: 160px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.sabedoria {
+    position: absolute;
+    top: 225px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+.carisma {
+    position: absolute;
+    top: 290px; 
+    left: -124px; 
+    font-size: 20px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.acrobacia {
+    position: absolute;
+    top: 112px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.animais {
+    position: absolute;
+    top: 123px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.arcanismo {
+    position: absolute;
+    top: 136px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+.atletismo {
+    position: absolute;
+    top: 148px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.enganacao {
+    position: absolute;
+    top: 161px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.furtividade {
+    position: absolute;
+    top: 173px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.historia {
+    position: absolute;
+    top: 186px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.intimidacao {
+    position: absolute;
+    top: 198px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.intuicao {
+    position: absolute;
+    top: 211px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.investigacao {
+    position: absolute;
+    top: 223px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.medicina {
+    position: absolute;
+    top: 236px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.natureza {
+    position: absolute;
+    top: 248px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+
+.percepcao {
+    position: absolute;
+    top: 260px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+.performance {
+    position: absolute;
+    top: 273px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.persuasao {
+    position: absolute;
+    top: 285px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.prestidigitacao {
+    position: absolute;
+    top: 297px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+
+.religiao {
+    position: absolute;
+    top: 310px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}
+.sobrevivencia {
+    position: absolute;
+    top: 322px; 
+    left: -65px; 
+    font-size: 10px;
+    font-family: 'MedievalSharp';
+    font-weight: bold;
+    text-align: left;
+    z-index: 10;
+}

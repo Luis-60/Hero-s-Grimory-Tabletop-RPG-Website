@@ -1,0 +1,68 @@
+/* Navbar */
+.nav {
+    height: 65px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10; /* Para garantir que o navbar esteja acima da imagem */
+    background-color: rgba(0, 0, 0, 0.0); /* Fundo semitransparente */
+    line-height: 65px;
+    text-align: center;
+}
+
+.nav div.logo {
+    padding-top: 1rem;
+    float: left;
+    width: auto;
+    height: auto;
+    padding-left: 3rem;
+}
+
+.nav div.main_list {
+    height: 65px;
+    float: right;
+}
+
+.nav div.main_list ul {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav div.main_list ul li {
+    width: auto;
+    height: 65px;
+    padding: 0;
+    padding-right: 3rem;
+}
+
+.nav div.main_list ul li a {
+    color: white;
+    font-size: 18px;
+}
+
+.nav div.main_list ul li a:hover {
+    text-decoration: underline;
+}
+.text1{
+position: absolute;
+top: 210px;
+left: 127px;
+font-size: 18px;
+font-family: 'Inika';
+font-weight: bold;
+text-align: left;
+}
+.email{
+    position: absolute;
+    top: 212px;
+    left: 185px;
+    font-size: 15px;
+    font-family: 'Inika';
+    color: rgb(126, 123, 123);
+    text-align: left;
+}
