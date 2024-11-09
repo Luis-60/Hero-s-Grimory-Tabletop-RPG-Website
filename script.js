@@ -1,6 +1,7 @@
-const maxWidth = 15;
-const maxWidthRaca = 4;
+const maxWidth = 15; // Valor que define o máximo de valor total dos atributos das raças
+const maxWidthRaca = 4; // Valor que define o máximo de valor total dos atributos predefinidos das raças
 
+// Atributo que o usuário vai alocar 
 let forcaWidth = 0;
 let constituicaoWidth = 0;
 let destrezaWidth = 0;
@@ -8,6 +9,7 @@ let inteligenciaWidth = 0;
 let sabedoriaWidth = 0;
 let carismaWidth = 0;
 
+// Atributos Predefinidos (Starta com o do Anão)
 let forca = 0;
 let constituicao = 2;
 let destreza = 0;
@@ -15,10 +17,19 @@ let inteligencia = 0;
 let sabedoria = 0;
 let carisma = 0;
 
-let valorPonto = 27; // Inicializa valorPonto com 27
-const ponto = document.getElementById('value-cb1');
+let valorPonto = 27; // 27 pontos para distribuir no método de compra de pontos
+const ponto = document.getElementById('value-cb1'); 
 ponto.innerText = valorPonto; // Atualiza o texto do elemento
 
+function resetarHabilidade(){
+    forcaWidth = 0
+    constituicaoWidth = 0
+    destrezaWidth = 0
+    inteligenciaWidth = 0
+    sabedoriaWidth = 0
+    carismaWidth = 0
+}
+// Função que vai atualizar o data-width do span do progress-bar 
 function atualizarBarras() {
     const habilidades = document.querySelectorAll('.habilidades h4');
     const spans = document.querySelectorAll('.progress-bar span');
@@ -62,6 +73,7 @@ function atualizarBarras() {
     });
 }
 
+// Função que atualiza o data-width do progress-bar-raca
 function atualizarBarrasRaca() {
     const habilidades = document.querySelectorAll('.habilidades h4');
     const spans = document.querySelectorAll('.progress-bar-raca span');
@@ -104,43 +116,73 @@ function atualizarBarrasRaca() {
         }
     });
 }
-function TrocarRaca() {
-    const racaSelecionada = document.querySelector('input[name="raca"]:checked');
-    
-    if (racaSelecionada) {
-        document.getElementById('raca').innerText = racaSelecionada.value;
-    
-        // Definindo valores de acordo com a raça selecionada
-        switch (racaSelecionada.value) {
-            case 'Anão':
-                forca = 0;
-                constituicao = 2; 
-                destreza = 0;
-                inteligencia = 0;
-                sabedoria = 0;
-                carisma = 0;
-                break;
-            case 'Elfo':
-                forca = 0;
-                constituicao = 0;
-                destreza = 2;
-                inteligencia = 0;
-                sabedoria = 0;
-                carisma = 0;
-                break;
-            case 'Humano':
-                forca = 1;
-                constituicao = 1;
-                destreza = 1;
-                inteligencia = 1;
-                sabedoria = 1;
-                carisma = 1;
-                break;
-        }
 
-        atualizarBarrasRaca(); // Atualiza as barras de raça com os valores definidos
+// Função que tem a funcionalidade de poder alterar as raças
+function TrocarRaca(element) {
+    const valorSelecionado = element.value;
+    console.log("Elemento recebido:", element);
+    console.log("Valor selecionado:", element.value)
+    // Atualiza o nome da raça no elemento com id="raca"
+    document.getElementById('raca').innerHTML = `<strong>${valorSelecionado.charAt(0)}</strong>${valorSelecionado.slice(1)}`;
+    
+// Definindo valores de acordo com a raça selecionada
+    switch (valorSelecionado) {
+        case 'ANÃO':
+            document.getElementById('texto-raca').innerText = "Personagens robustos e resistentes, mestres na mineração e forja, conhecidos por sua lealdade ao clã.";
+            document.getElementById('subraca-1').innerText = "Anão da Colina";
+            document.getElementById('texto-subraca-1').innerText = "Como um anão da colina, você tem sentidos aguçados, maior intuição e notável resiliência. Os anões dourados de Faerûn, que vivem em seu poderoso reino ao sul do continente, são anões da colina, assim como os exilados Neidar e os depreciáveis Klar de Krynn, no cenário de Dragonlance.";
+            document.getElementById('subraca-2').innerText = "Anão da Montanha";
+            document.getElementById('texto-subraca-2').innerText = "Como um anão da montanha, você é forte e resistente, acostumados a uma vida difícil em terrenos difíceis. Você, provavelmente tem a descendência daqueles mais altos (para um anão) e tende a possuir uma coloração mais clara. Os anões do escudo do norte de Faerûn, bem como o clã governante Hylar e os clãs nobres Daewar de Dragonlance, são anões da montanha.";
+            document.body.style.backgroundImage = "url('public/images/backgroundanao.png')";
+            forca = 0;
+            constituicao = 2;
+            destreza = 0;
+            inteligencia = 0;
+            sabedoria = 0;
+            carisma = 0;
+            break;
+
+        case 'ELFO':
+            document.getElementById('texto-raca').innerText = "Seres místicos e humanóides, geralmente belos e ágeis, conhecidos por sua longevidade e habilidades mágicas.";
+            document.getElementById('subraca-1').innerText = "Alto Elfo";
+            document.getElementById('texto-subraca-1').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Truque: Você conhece um truque, à sua escolha, da lista de truques do mago. Inteligência é a habilidade usada para conjurar este truque. Idioma Adicional: Você pode falar, ler e escrever um idioma adicional à sua escolha.";
+            document.getElementById('subraca-2').innerText = "Elfo da Floresta";
+            document.getElementById('texto-subraca-2').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Pés Ligeiros: Seu deslocamento base de caminhada aumenta para 10,5 metros. Máscara da Natureza: Você pode tentar se esconder mesmo quando você está apenas levemente obscurecido por folhagem, chuva forte, neve caindo, névoa ou outro fenômeno natural.";
+            document.body.style.backgroundImage = "url('public/images/backgroundelfo.png')";
+            forca = 0;
+            constituicao = 0;
+            destreza = 2;
+            inteligencia = 0;
+            sabedoria = 0;
+            carisma = 0;
+            break;
+
+        case 'HUMANO':
+
+            document.getElementById('subraca').innerText = "";
+            document.getElementById('texto-raca').innerText = "São versáteis, adaptáveis e ambiciosos, capazes de se destacar em qualquer classe ou alinhamento.";
+            document.getElementById('texto-subraca-2').innerText = "";
+            document.getElementById('subraca-1').innerText = "";
+            document.getElementById('texto-subraca-1').innerText = "";
+            document.getElementById('subraca-2').innerText = "";
+            document.body.style.backgroundImage = "url('public/images/backgroundhumano.png')"; 
+            forca = 1;
+            constituicao = 1;
+            destreza = 1;
+            inteligencia = 1;
+            sabedoria = 1;
+            carisma = 1;
+            break;
     }
+    atualizarBarrasRaca(); // Atualiza as barras de raça com os valores definidos
 }
+
+document.querySelectorAll('.raca').forEach(img => {
+    img.addEventListener('click', function() {
+        TrocarRaca(this);
+    });
+});
+
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', function() {
@@ -150,37 +192,38 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('hab').selectedIndex = -1; // Define a combobox como nula
 });
     // Configurar os botões de adicionar e subtrair para cada barra de progresso
-document.querySelectorAll('.progress-container').forEach(function(container) {
-    const span = container.querySelector('.progress-bar span');
-
-    // Seleciona os botões 'add' e 'sub' fora do contêiner usando o índice
-    const addButton = container.closest('.container').querySelector('.add'); // Busca o botão mais próximo
-    const subButton = container.closest('.container').querySelector('.sub'); // Busca o botão mais próximo
-
-    // Inicializar a barra de progresso com o valor de data-width
-    let initialWidth = parseInt(span.getAttribute('data-width'));
-    span.style.width = initialWidth * (100 / maxWidth) + '%'; // Ajusta a largura inicial da barra proporcional ao maxWidth
-
-    // Quando o botão de adicionar for clicado
-    addButton.addEventListener('click', function() {
-        if (valorPonto > 0) {
-            updateProgressBar(span, 1); // Aumenta em 1
-            atualizarHabilidade(span, 1); // Atualiza a variável da habilidade correspondente
-            valorPonto--;
-            ponto.innerText = valorPonto; // Atualiza o texto do elemento
-        }
+    document.querySelectorAll('.progress-container').forEach(function(container) {
+        const span = container.querySelector('.progress-bar span');
+    
+        // Seleciona os botões 'add' e 'sub' fora do contêiner usando o índice
+        const addButton = container.querySelector('.add'); // Busca o botão mais próximo
+        const subButton = container.querySelector('.sub'); // Busca o botão mais próximo
+    
+        // Inicializar a barra de progresso com o valor de data-width
+        let initialWidth = parseInt(span.getAttribute('data-width'));
+        span.style.width = initialWidth * (100 / maxWidth) + '%'; // Ajusta a largura inicial da barra proporcional ao maxWidth
+    
+        // Quando o botão de adicionar for clicado
+        addButton.addEventListener('click', function() {
+            if (valorPonto > 0) {
+                updateProgressBar(span, 1); // Aumenta em 1
+                atualizarHabilidade(span, 1); // Atualiza a variável da habilidade correspondente
+                valorPonto--;
+                ponto.innerText = valorPonto; // Atualiza o texto do elemento
+            }
+        });
+    
+        // Quando o botão de subtrair for clicado
+        subButton.addEventListener('click', function() {
+            if (parseInt(span.getAttribute('data-width')) > 0) { // Verifica se o valor atual é maior que 0
+                updateProgressBar(span, -1); // Diminui em 1
+                atualizarHabilidade(span, -1); // Atualiza a variável da habilidade correspondente
+                valorPonto++; // Aumenta valorPonto ao subtrair
+                ponto.innerText = valorPonto; // Atualiza a interface
+            }
+        });
     });
-
-    // Quando o botão de subtrair for clicado
-    subButton.addEventListener('click', function() {
-        if (parseInt(span.getAttribute('data-width')) > 0) { // Verifica se o valor atual é maior que 0
-            updateProgressBar(span, -1); // Diminui em 1
-            atualizarHabilidade(span, -1); // Atualiza a variável da habilidade correspondente
-            valorPonto++; // Aumenta valorPonto ao subtrair
-            ponto.innerText = valorPonto; // Atualiza a interface
-        }
-    });
-});
+    
 
 
 // Função para atualizar a barra de progresso
@@ -218,7 +261,7 @@ function updateProgressBarRaca(span, increment) {
     span.innerText = width;
 }
 
-// Função para atualizar as variáveis de habilidade
+// Função para atualizar os dados de habilidade
 function atualizarHabilidade(span, increment) {
     let habilidadeElement = span.closest('.container').querySelector('.habilidades h4');
     let habilidade = habilidadeElement ? habilidadeElement.innerText.toLowerCase() : '';
@@ -250,7 +293,7 @@ document.getElementById('hab').addEventListener('change', function() {
 
     switch (select.value) {
         case '1':
-            TrocarRaca()
+            resetarHabilidade()
             valorPonto = 27; // Converte '27' de string para número
             ponto.innerText = valorPonto; // Atualiza o texto do elemento
             break;
@@ -258,7 +301,7 @@ document.getElementById('hab').addEventListener('change', function() {
     }
     switch (select.value) {
         case '2':
-            TrocarRaca
+            resetarHabilidade()
             valorPonto = 0;
             ponto.innerText = valorPonto; 
             break;
@@ -266,7 +309,7 @@ document.getElementById('hab').addEventListener('change', function() {
     }
     switch (select.value) {
         case '3':
-            TrocarRaca()
+            resetarHabilidade()
             habilidades = [0, 0, 0, 0, 0, 0]
             valorPonto = 0;
             ponto.innerText = valorPonto; 
@@ -297,7 +340,7 @@ function rolarAtributos(){
         DTotal = Math.min(DTotal, 15);
         console.log(`${habilidade}: ${DTotal}`);
 
-        // Atualizar a variável correspondente
+        // Atualizar a iável correspondente
         switch (habilidade) {
             case 'forca':
                 forcaWidth = DTotal;
@@ -319,7 +362,6 @@ function rolarAtributos(){
                 break;
         }
     });
-
     // Atualizar as barras após rolar todos os atributos
     atualizarBarras();
 }
