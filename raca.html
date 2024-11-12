@@ -51,8 +51,10 @@
             <img class="info" src="images/simbolo-informacao.png">
             <button class="sub">-</button>
             <button class="add">+</button>
-            <p class="raca-total">0</p>
-        </div>
+            <div class="raca-total">
+                <label class="raca-total-forca">0</label>
+            </div>
+            </div>
 
             <div class="habilidades">
                 <h4 id="constituicao">con</h4>
@@ -69,7 +71,9 @@
                 <img class="info" src="images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
-                <p class="raca-total">0</p>
+                <div class="raca-total">
+                    <label class="raca-total-constituicao">0</label>
+                </div>
             </div>
         
             <div class="habilidades">
@@ -87,7 +91,9 @@
                 <img class="info" src="images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
-                <p class="raca-total">0</p>
+                <div class="raca-total">
+                    <label class="raca-total-destreza">0</label>
+                </div>
             </div>
             
             <div class="habilidades">
@@ -105,7 +111,9 @@
                 <img class="info" src="images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
-                <p class="raca-total">0</p>
+                <div class="raca-total">
+                    <label class="raca-total-inteligencia">0</label>
+                </div>
             </div>
 
             <div class="habilidades">
@@ -123,7 +131,10 @@
                 <img class="info" src="images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
-                <p class="raca-total">0</p>
+                <div class="raca-total">
+                    <label class="raca-total-sabedoria">0</label>
+                </div>
+                    
             </div>
             
             <div class="habilidades">
@@ -141,21 +152,27 @@
                 <img class="info" src="images/simbolo-informacao.png">
                 <button class="sub">-</button>
                 <button class="add">+</button>
-                <p class="raca-total">0</p>
+                <div class="raca-total">
+                    <label class="raca-total-carisma">0</label>
+                </div>
             </div>
             
         
     </div>
     <p id="value-cb1"></p>
         <h1 id="subraca">Subraças</h1>
+        
         <h2 id="subraca-1">Anão da Colina</h2>
+        <input type="radio" name="subraca-radio" id="subraca-radio" value="subraca-radio">
             <p id="texto-subraca-1">Como um anão da colina, você tem sentidos aguçados,
                 maior intuição e  notável resiliência. Os anões
                 dourados de Faerûn, que vivem em seu  poderoso reino 
                 ao sul do continente, são anões da colina, assim como os
                 exilados Neidar e os depreciáveis Klar de Krynn,
                 no cenário de  Dragonlance.</p>
+        
         <h2 id="subraca-2">Anão da Montanha</h2>
+        <input type="radio" name="subraca-radio" id="subraca-radio2" value="subraca-radio">
             <p id="texto-subraca-2">Como um anão da montanha, você é forte e resistente,
                 acostumados a uma  vida difícil em terrenos difíceis.
                 Você, provavelmente tem a  descendência daqueles mais
@@ -163,8 +180,25 @@
                 mais clara. Os anões do escudo do norte de Faerûn, bem
                 como o  clã governante Hylar e os clãs nobres Daewar de
                 Dragonlance, são anões  da montanha.</p>
+        <button class="btnOpenModal" onclick="openModal()">Criar Personagem</button>
             </div>
-
-<script src="public/script.js"></script>
+    <div class="modal-container">
+        <div class="modal">
+            <h2>Info</h2>
+            <hr>
+                <span>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, 
+                    eaque possimus? Suscipit consequuntur repellendus pariatur vel! Illum 
+                    corrupti minus voluptatum nisi perspiciatis, reiciendis voluptates! 
+                    Aliquid sint id corporis et perspiciatis?
+                </span>
+            </hr>
+            <div class="btns">
+                <button class="btnOK" onclick="closeModal()">OK</button>
+                <button class="btnClose" onclick="closeModal()">FECHA ESSA MERDA</button>
+            </div>
+        </div>
+    </div>
+<script src="raca.js"></script>
 </body>
 </html>
