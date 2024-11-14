@@ -23,32 +23,6 @@ const pool = new Pool ({
 
 app.use(bodyParser.json());
 
-app.use(express.static('public'));
-app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html');
-});
-
-app.get('/login.html', (req, res) => {
-    res.sendFile(__dirname + '/login.html'); 
-});
-
-app.get('/cadastro.html', (req, res) => {
-    res.sendFile(__dirname + '/cadastro.html'); 
-});
-
-app.get('/index.html', (req, res) => {
-    res.sendFile(__dirname + '/index.html'); 
-}); 
-app.get('/raca.html', (req, res) => {
-    res.sendFile(__dirname + '/raca.html'); 
-}); 
-app.get('/ficha.html', (req, res) => {
-    res.sendFile(__dirname + '/ficha.html'); 
-}); 
-app.get('/usuario.html', (req, res) => {
-    res.sendFile(__dirname + '/usuario.html'); 
-}); 
-
 app.post('/submit', async (req, res) => {
     const { nome, email, senha} = req.body;
     const iv = crypto.randomBytes(16);
