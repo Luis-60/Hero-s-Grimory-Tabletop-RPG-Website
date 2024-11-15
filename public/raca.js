@@ -385,6 +385,12 @@ const modal = document.querySelector('.modal-container')
 
 function openModal(){
     modal.classList.add('active')
+    document.getElementById("forca-span").innerText = Math.floor((forca + forcaWidth - 10) / 2);
+    document.getElementById("carisma-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("destreza-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
+    document.getElementById("sabedoria-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+    document.getElementById("inteligencia-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("constituicao-span").innerText = Math.floor((constituicao + constituicaoWidth - 10) / 2);
 }
 function closeModal(){
     modal.classList.remove('active')
