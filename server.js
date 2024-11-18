@@ -1,17 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const session = require("express-session");
 const { Pool } = require('pg');
 const db = require('./server.js');
 
-const crypto = require('crypto')
-const DADOS_CRIPTOGRAFAR = {
-    algoritmo: 'aes-256-cbc', // Usando aes-256-cbc, que requer um IV
-    segredo: 'chavesseguracom32caracteres!', // Uma chave de 32 bytes para aes-256
-    tipo: 'hex'
-};
-
 const app = express();
 const port = 3000;
+
+
+app.use(session({
+    secret: "Hero-Grimory",
+    resave: true,
+    saveUninitialized: true,
+    cookie: {secure: false},
+}));
 
 const pool = new Pool ({
     user: 'postgres',
@@ -48,67 +50,92 @@ app.get('/ficha.html', (req, res) => {
 app.get('/usuario.html', (req, res) => {
     res.sendFile(__dirname + '/usuario.html'); 
 }); 
+app.get('/middle.html', (req, res) =>{
+    res.sendFile(__dirname + '/middle.html')
+});
+app.get('/dados.html', (req, res) =>{
+    res.sendFile(__dirname + '/dados.html')
+});
+
 
 app.post('/submit', async (req, res) => {
-    const { nome, email, senha} = req.body;
-    const iv = crypto.randomBytes(16);
-    
-    // Garantir que a chave tenha 32 bytes (256 bits) usando createHash
-    const key = crypto.createHash('sha256').update(DADOS_CRIPTOGRAFAR.segredo).digest();
+    const { nome, email, senha } = req.body;
 
-    // Crie o objeto Cipher com o algoritmo, chave e IV
-    const cipher = crypto.createCipheriv(DADOS_CRIPTOGRAFAR.algoritmo, key, iv);
-    let senhaCriptografada = cipher.update(senha, 'utf8', DADOS_CRIPTOGRAFAR.tipo);
-    senhaCriptografada += cipher.final(DADOS_CRIPTOGRAFAR.tipo);
+    // Verificar se o nome, email e senha estão preenchidos
+    if (!nome || !email || !senha) {
+        return res.status(400).json({ message: 'Dados inválidos! Nome, email e senha são obrigatórios.' });
+    }
 
-    // Combine o IV com a senha criptografada
-    const senhaComIV = iv.toString(DADOS_CRIPTOGRAFAR.tipo) + ':' + senhaCriptografada;
-    try{
+    try {
         const result = await pool.query(
             'INSERT INTO Usuarios(Nome, Email, Senha) VALUES ($1, $2, $3)',
-            [nome, email, senhaComIV]
+            [nome, email, senha]
         );
         res.status(200).send('Dados inseridos com sucesso');
-    } catch(err){
+    } catch (err) {
         console.error('Erro ao inserir dados', err);
         res.status(500).send('Erro ao inserir dados');
     }
 });
+
 app.post('/login', async (req, res) => {
     const { nome, senha } = req.body;
-    const iv = crypto.randomBytes(16);
 
-    // Garantir que a chave tenha 32 bytes (256 bits) usando createHash
-    const key = crypto.createHash('sha256').update(DADOS_CRIPTOGRAFAR.segredo).digest();
+    try {
+        const result = await pool.query(
+            'SELECT id_usuario, nome, senha FROM Usuarios WHERE nome = $1',
+            [nome]
+        );
 
-    // Crie o objeto Cipher com o algoritmo, chave e IV
-    const cipher = crypto.createCipheriv(DADOS_CRIPTOGRAFAR.algoritmo, key, iv);
-    let senhaCriptografada = cipher.update(senha, 'utf8', DADOS_CRIPTOGRAFAR.tipo);
-    senhaCriptografada += cipher.final(DADOS_CRIPTOGRAFAR.tipo);
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Usuário não encontrado!' });
+        }
 
-    // Combine o IV com a senha criptografada
-    const senhaComIV = iv.toString(DADOS_CRIPTOGRAFAR.tipo) + ':' + senhaCriptografada;
- try{
-const result = await pool.query(
-    'SELECT * FROM Usuarios WHERE nome = $1 AND senha = $2',
-    [nome, senhaComIV]
-);
-if (result.rows.length > 0) {
-    const usuario = result.rows[0];
+        const usuario = result.rows[0];
 
-    if (usuario.senha === senha) {
-        res.status(200).json({ message: 'Login realizado com sucesso'});
-    } else {
-        res.status(401).json({ message: 'Senha incorreta!'})
-    }   
-} else {
-    res.status(404).json({ message: 'Usuário não encontrado!'});
-}
- } catch (err) {
-    console.error('Erro ao realizar login', err);
-    res.status(500).send('Erro ao realizar login');
- } 
+        if (usuario.senha !== senha) {
+            return res.status(401).json({ message: 'Senha incorreta!' });
+        }
+
+        // Se a senha estiver correta
+        req.session.login = usuario.id_usuario;
+        req.session.nomeUsuario = usuario.nome
+        
+        res.status(200).json({
+            status: "sucesso",
+            message: 'Login realizado com sucesso',
+            usuario: {
+                nome: usuario.nome,
+                id: usuario.id_usuario
+            }
+        });
+    } catch (err) {
+        console.error('Erro ao realizar login', err);
+        res.status(500).send('Erro ao realizar login');
+    }
 });
+app.get('/verificar-sessao', (req, res) => {
+    if (req.session.login) {
+        res.status(200).json({ logado: true, nome: req.session.nomeUsuario });
+    } else {
+        res.status(200).json({ logado: false });
+    }
+});
+
+
+
+app.get('/usuario-nome', (req, res) => {
+    if (!req.session.login) {
+        return res.status(401).json({ message: 'Usuário não está logado' });
+    }
+
+    const nomeUsuario = req.session.name; // Acessando o nome do usuário da sessão
+    res.status(200).json({ nome: nomeUsuario });
+});
+
+
 app.listen(port, () => {
     console.log(`Servidor rodando em http://localhost:${port}`);
 });
+
+module.exports = app;
