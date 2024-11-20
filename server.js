@@ -7,7 +7,7 @@ const db = require('./server.js');
 const app = express();
 const port = 3000;
 
-
+;//sessao
 app.use(session({
     secret: "Hero-Grimory",
     resave: true,
@@ -15,6 +15,7 @@ app.use(session({
     cookie: {secure: false},
 }));
 
+// conexão ao banco de dados
 const pool = new Pool ({
     user: 'postgres',
     host: '127.0.0.1',
@@ -25,6 +26,7 @@ const pool = new Pool ({
 
 app.use(bodyParser.json());
 
+// rotas
 app.use(express.static('public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -57,7 +59,7 @@ app.get('/dados.html', (req, res) =>{
     res.sendFile(__dirname + '/dados.html')
 });
 
-
+// inserção no banco de dados
 app.post('/submit', async (req, res) => {
     const { nome, email, senha } = req.body;
 
@@ -78,6 +80,7 @@ app.post('/submit', async (req, res) => {
     }
 });
 
+// Validação de login
 app.post('/login', async (req, res) => {
     const { nome, senha } = req.body;
 
@@ -123,7 +126,7 @@ app.get('/verificar-sessao', (req, res) => {
 });
 
 
-
+// conferência do usuario
 app.get('/usuario-nome', (req, res) => {
     if (!req.session.login) {
         return res.status(401).json({ message: 'Usuário não está logado' });
@@ -132,6 +135,34 @@ app.get('/usuario-nome', (req, res) => {
     const nomeUsuario = req.session.name; // Acessando o nome do usuário da sessão
     res.status(200).json({ nome: nomeUsuario });
 });
+
+app.get('/perfil', async (req, res) =>{
+    const idUsuario = req.session.login;
+
+    try {
+        const result = await pool.query(
+            'select email, senha from usuarios Where id_usuario = $1',
+            [idUsuario]
+        );
+        const usuario = result.rows[0];
+        const email = usuario.email; 
+        const senha = usuario.senha
+    
+
+        res.status(200).json({
+            status: "sucesso",
+            message: 'Login realizado com sucesso',
+            usuario: {
+                email: email,
+                senha: senha
+            }
+        
+        });
+    } catch (err) {
+        console.error('Erro ao consultar', err);
+        res.status(500).send('Erro ao consultar dados');
+    }
+})
 
 
 app.listen(port, () => {

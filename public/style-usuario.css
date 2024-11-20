@@ -48,6 +48,7 @@
 .nav div.main_list ul li a:hover {
     text-decoration: underline;
 }
+
 .text1{
 position: absolute;
 top: 210px;
@@ -64,5 +65,32 @@ text-align: left;
     font-size: 15px;
     font-family: 'Inika';
     color: rgb(126, 123, 123);
+    text-align: left;
+}
+
+.text2{
+    position: absolute;
+    top: 250px;
+    left: 127px;
+    font-size: 18px;
+    font-family: 'Inika';
+    font-weight: bold;
+    text-align: left;
+}
+.senha{
+    position: absolute;
+    top: 253px;
+    left: 187px;
+    font-size: 15px;
+    font-family: 'Inika';
+    color: rgb(126, 123, 123);
+    text-align: left;
+}
+.trocar-senha{
+    position: absolute;
+    top: 280px;
+    left: 140px;
+    font-size: 15px;
+    font-family: 'Inika';
     text-align: left;
 }
