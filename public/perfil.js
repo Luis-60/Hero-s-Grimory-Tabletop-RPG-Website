@@ -31,7 +31,7 @@ function sair() {
         .catch(error => console.error('Erro na requisição de logout:', error));
 }
 
-function gerarFicha(){
+document.addEventListener('DOMContentLoaded', function gerarFicha(){
     fetch('/gerarFicha', {method: 'GET'})
         .then(response => response.json())
         .then(data => {
@@ -64,6 +64,8 @@ function gerarFicha(){
             const sobrevivencia = data.ficha.sobrevivencia;
 
 
+            document.getElementById('nomeFicha').textContent = `${nome}`;
+            document.getElementById('descricao'). textContent = `Olá, sou ${nome}, de raça ${raca} de sub-raça ${subraca} com orgulho`
            
             localStorage.setItem('raca', raca);
             localStorage.setItem('subraca', subraca);
@@ -94,4 +96,4 @@ function gerarFicha(){
             localStorage.setItem('sobrevivencia', sobrevivencia);
             
         })
-    }
+    })
