@@ -97,3 +97,55 @@ document.addEventListener('DOMContentLoaded', function gerarFicha(){
             
         })
     })
+
+
+function editAboutMe() {
+    // Obter os elementos
+    const aboutMeText = document.getElementById('aboutMeText');
+    const aboutMeInput = document.getElementById('aboutMeInput');
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+
+    // Transferir o texto para o campo de entrada
+    aboutMeInput.value = aboutMeText.textContent;
+
+    // Alternar visibilidade
+    aboutMeText.style.display = 'none';
+    aboutMeInput.style.display = 'block';
+    editButton.style.display = 'none';
+    saveButton.style.display = 'block';
+}
+
+function saveAboutMe() {
+    // Obter os elementos
+    const aboutMeText = document.getElementById('aboutMeText');
+    const aboutMeInput = document.getElementById('aboutMeInput');
+    const editButton = document.getElementById('editButton');
+    const saveButton = document.getElementById('saveButton');
+
+    // Salvar o texto editado
+    aboutMeText.textContent = aboutMeInput.value;
+
+    // Alternar visibilidade
+    aboutMeText.style.display = 'block';
+    aboutMeInput.style.display = 'none';
+    editButton.style.display = 'block';
+    saveButton.style.display = 'none';
+}
+
+
+function updateAvatar(event) {
+    const avatarImage = document.getElementById('avatarImage');
+    const file = event.target.files[0];
+
+    if (file) {
+        const reader = new FileReader();
+
+        // Atualizar a imagem assim que o arquivo for carregado
+        reader.onload = function(e) {
+            avatarImage.src = e.target.result;
+        };
+
+        reader.readAsDataURL(file);
+    }
+}

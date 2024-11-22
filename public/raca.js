@@ -9,6 +9,9 @@ let inteligenciaWidth = 0;
 let sabedoriaWidth = 0;
 let carismaWidth = 0;
 
+racaSelecionada =  '';
+subracaSelecionada = '';
+
 // Atributos Predefinidos (Starta com o do Anão)
 let forca = 0;
 let constituicao = 2;
@@ -119,50 +122,159 @@ function atualizarBarrasRaca() {
 
 // Função que tem a funcionalidade de poder alterar as raças
 function TrocarRaca(element) {
+    // Reseta o estilo de todas as raças para que apenas a clicada fique ativa
+    document.querySelectorAll('input[name="raca"]').forEach(input => {
+        input.classList.remove('active'); // Remove a classe ativa de todos os inputs
+    });
+
+    // Marca a raça selecionada como ativa
+    element.classList.add('active'); // Adiciona a classe 'active' ao input que foi clicado
+
+    // Atualiza o nome da raça
     const valorSelecionado = element.value;
-    console.log("Elemento recebido:", element);
-    console.log("Valor selecionado:", element.value)
-    // Atualiza o nome da raça no elemento com id="raca"
     document.getElementById('raca').innerHTML = `<strong>${valorSelecionado.charAt(0)}</strong>${valorSelecionado.slice(1)}`;
-    
-// Definindo valores de acordo com a raça selecionada
+    console.log("Elemento recebido:", element);
+    console.log("Valor selecionado:", valorSelecionado);
+
+    // Resetar a visibilidade dos inputs de sub-raça e esconder qualquer input antigo
+    document.getElementById('subraca-radio').style.display = "none";
+    document.getElementById('subraca-radio2').style.display = "none";
+    document.querySelectorAll('input[name="subraca-radio"]').forEach(radio => {
+        radio.checked = false;
+    });
+
+    // Definindo valores de acordo com a raça selecionada
     switch (valorSelecionado) {
         case 'ANÃO':
+            racaSelecionada = "Anão"
+            subracaSelecionada = ""
+            console.log("ANÃO ESTÁ SELECIONADO");
             document.getElementById('texto-raca').innerText = "Personagens robustos e resistentes, mestres na mineração e forja, conhecidos por sua lealdade ao clã.";
             document.getElementById('subraca-1').innerText = "Anão da Colina";
-            document.getElementById('texto-subraca-1').innerText = "Como um anão da colina, você tem sentidos aguçados, maior intuição e notável resiliência. Os anões dourados de Faerûn, que vivem em seu poderoso reino ao sul do continente, são anões da colina, assim como os exilados Neidar e os depreciáveis Klar de Krynn, no cenário de Dragonlance.";
+            document.getElementById('texto-subraca-1').innerText = "Como um anão da colina, você tem sentidos aguçados,\
+                maior intuição e  notável resiliência. Os anões\
+                dourados de Faerûn, que vivem em seu  poderoso reino\
+                ao sul do continente, são anões da colina, assim como os\
+                exilados Neidar e os depreciáveis Klar de Krynn,\
+                no cenário de  Dragonlance.";
             document.getElementById('subraca-2').innerText = "Anão da Montanha";
-            document.getElementById('texto-subraca-2').innerText = "Como um anão da montanha, você é forte e resistente, acostumados a uma vida difícil em terrenos difíceis. Você, provavelmente tem a descendência daqueles mais altos (para um anão) e tende a possuir uma coloração mais clara. Os anões do escudo do norte de Faerûn, bem como o clã governante Hylar e os clãs nobres Daewar de Dragonlance, são anões da montanha.";
+            document.getElementById('texto-subraca-2').innerText = "Como um anão da montanha, você é forte e resistente,\
+                acostumados a uma  vida difícil em terrenos difíceis.\
+                Você, provavelmente tem a  descendência daqueles mais\
+                altos (para um anão) e tende a possuir uma  coloração\
+                mais clara. Os anões do escudo do norte de Faerûn, bem\
+                como o  clã governante Hylar e os clãs nobres Daewar de\
+                Dragonlance, são anões  da montanha.";
             document.body.style.backgroundImage = "url('images/backgroundanao.png')";
             document.getElementById('subraca-radio').style.display = "block";
             document.getElementById('subraca-radio2').style.display = "block";
+
+            // Atualizar atributos do Anão
             forca = 0;
             constituicao = 2;
             destreza = 0;
             inteligencia = 0;
             sabedoria = 0;
             carisma = 0;
+
+            // Gerenciar a seleção de sub-raça
+            document.querySelectorAll('input[name="subraca-radio"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (valorSelecionado !== 'ANÃO') return; // Ignora eventos se a raça não for Anão
+
+                    switch (this.id) {
+                        case 'subraca-radio': // Anão da Colina
+                            subracaSelecionada = 'Anão da Colina';
+                            console.log("subraça é anão da colina");
+                            forca = 0;
+                            sabedoria = 1;
+                            constituicao = 2;
+                            destreza = 0;
+                            inteligencia = 0;
+                            carisma = 0;
+                            break;
+                        case 'subraca-radio2': // Anão da Montanha
+                            subracaSelecionada = 'Anão da Montanha';
+                            console.log("subraça é anão da montanha");
+                            forca = 2;
+                            constituicao = 2;
+                            destreza = 0
+                            sabedoria = 0;
+                            inteligencia = 0;
+                            carisma = 0;
+                            break;
+                    }
+                    console.log("Atributos atualizados: ", { forca, constituicao, destreza, inteligencia, sabedoria, carisma });
+                    atualizarBarrasRaca(); // Atualiza as barras com os valores novos
+                    updateValue();
+                });
+            });
             break;
 
         case 'ELFO':
+            racaSelecionada = "Elfo"
+            subracaSelecionada = ""
+            console.log("ELFO ESTÁ SELECIONADO");
             document.getElementById('texto-raca').innerText = "Seres místicos e humanóides, geralmente belos e ágeis, conhecidos por sua longevidade e habilidades mágicas.";
             document.getElementById('subraca-1').innerText = "Alto Elfo";
-            document.getElementById('texto-subraca-1').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Truque: Você conhece um truque, à sua escolha, da lista de truques do mago. Inteligência é a habilidade usada para conjurar este truque. Idioma Adicional: Você pode falar, ler e escrever um idioma adicional à sua escolha.";
+            document.getElementById('texto-subraca-1').innerText = "Treinamento Élfico com Armas: Você possui proficiência\
+            com espadas longas, espadas curtas, arcos longos e arcos curtos. Truque: Você conhece um truque, à sua escolha,\
+            da lista de truques do mago. Inteligência é a habilidade usada para conjurar este truque. Idioma Adicional: Você\
+            pode falar, ler e escrever um idioma adicional à sua escolha.";
             document.getElementById('subraca-2').innerText = "Elfo da Floresta";
-            document.getElementById('texto-subraca-2').innerText = "Treinamento Élfico com Armas: Você possui proficiência com espadas longas, espadas curtas, arcos longos e arcos curtos. Pés Ligeiros: Seu deslocamento base de caminhada aumenta para 10,5 metros. Máscara da Natureza: Você pode tentar se esconder mesmo quando você está apenas levemente obscurecido por folhagem, chuva forte, neve caindo, névoa ou outro fenômeno natural.";
+            document.getElementById('texto-subraca-2').innerText = "Treinamento Élfico com Armas: Você possui proficiência com \
+            espadas longas, espadas curtas, arcos longos e arcos curtos. Pés Ligeiros: Seu deslocamento base de caminhada aumenta \
+            para 10,5 metros. Máscara da Natureza: Você pode tentar se esconder mesmo quando você está apenas levemente obscurecido \
+            por folhagem, chuva forte, neve caindo, névoa ou outro fenômeno natural.";
             document.body.style.backgroundImage = "url('images/backgroundelfo.png')";
             document.getElementById('subraca-radio').style.display = "block";
             document.getElementById('subraca-radio2').style.display = "block";
+
+            // Atualizar atributos do Elfo
             forca = 0;
             constituicao = 0;
             destreza = 2;
             inteligencia = 0;
             sabedoria = 0;
             carisma = 0;
+
+            // Gerenciar a seleção de sub-raça
+            document.querySelectorAll('input[name="subraca-radio"]').forEach(radio => {
+                radio.addEventListener('change', function () {
+                    if (valorSelecionado !== 'ELFO') return; // Ignora eventos se a raça não for Elfo
+
+                    switch (this.id) {
+                        case 'subraca-radio': // Alto Elfo
+                        subracaSelecionada = 'Alfo elfo';    
+                            console.log("subraça é alto elfo");
+                            forca = 0;
+                            constituicao = 0;
+                            destreza = 2;
+                            inteligencia = 1;
+                            sabedoria = 0;
+                            carisma = 0;
+                            break;
+                        case 'subraca-radio2': // Elfo da Floresta
+                            subracaSelecionada = 'Elfo da FLoresta';
+                            console.log("subraça é elfo da floresta");
+                            forca = 0;
+                            constituicao = 0;
+                            destreza = 2;
+                            inteligencia = 0;
+                            sabedoria = 1;
+                            carisma = 0;
+                            break;
+                    }
+                    console.log("Atributos atualizados: ", { forca, constituicao, destreza, inteligencia, sabedoria, carisma });
+                    atualizarBarrasRaca(); // Atualiza as barras com os valores novos
+                    updateValue();
+                });
+            });
             break;
 
         case 'HUMANO':
-
+            racaSelecionada = "Humano"
+            subracaSelecionada = " "
             document.getElementById('subraca').innerText = "";
             document.getElementById('texto-raca').innerText = "São versáteis, adaptáveis e ambiciosos, capazes de se destacar em qualquer classe ou alinhamento.";
             document.getElementById('texto-subraca-2').innerText = "";
@@ -171,7 +283,9 @@ function TrocarRaca(element) {
             document.getElementById('subraca-2').innerText = "";
             document.getElementById('subraca-radio').style.display = "none";
             document.getElementById('subraca-radio2').style.display = "none";
-            document.body.style.backgroundImage = "url('images/backgroundhumano.png')"; 
+            document.body.style.backgroundImage = "url('images/backgroundhumano.png')";
+
+            // Atualizar atributos do Humano
             forca = 1;
             constituicao = 1;
             destreza = 1;
@@ -180,14 +294,20 @@ function TrocarRaca(element) {
             carisma = 1;
             break;
     }
-    atualizarBarrasRaca(); // Atualiza as barras de raça com os valores definidos
+
+    // Atualiza as barras de raça com os valores definidos
+    atualizarBarrasRaca();
+    updateValue();
 }
 
-document.querySelectorAll('.raca').forEach(img => {
-    img.addEventListener('click', function() {
-        TrocarRaca(this);
+// Adiciona o ouvinte de clique a todos os elementos com a classe 'raca'
+document.querySelectorAll('.raca').forEach(input => {
+    input.addEventListener('click', function() {
+        TrocarRaca(this); // Chama a função TrocarRaca quando o input é clicado
     });
 });
+
+
 
 
 // Inicialização
@@ -195,7 +315,9 @@ document.addEventListener('DOMContentLoaded', function() {
     atualizarBarras(); // Atualiza as barras inicialmente
     atualizarBarrasRaca(); // Atualiza as barras da raça inicialmente
     updateValue();
-
+    const defaultRace = document.getElementById('default-race');
+    TrocarRaca(defaultRace); // Chama a função para selecionar o "Anão"
+    
     document.getElementById('hab').selectedIndex = -1; // Define a combobox como nula
 });
     // Configurar os botões de adicionar e subtrair para cada barra de progresso
@@ -392,18 +514,23 @@ function closeModal(){
 
 function openModal(){
     modal.classList.add('active')
+    document.getElementById("raca-span").innerText = racaSelecionada;
+    document.getElementById("subraca-span").innerText = subracaSelecionada;
     document.getElementById("forca-span").innerText = Math.floor((forca + forcaWidth - 10) / 2);
     document.getElementById("carisma-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
     document.getElementById("destreza-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
     document.getElementById("sabedoria-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
     document.getElementById("inteligencia-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
     document.getElementById("constituicao-span").innerText = Math.floor((constituicao + constituicaoWidth - 10) / 2);
+    document.getElementById("acrobacia-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
     document.getElementById("arcanismo-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
     document.getElementById("atletismo-span").innerText = Math.floor((forca + forcaWidth - 10) / 2);
     document.getElementById("enganacao-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("furtividade-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
     document.getElementById("historia-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
     document.getElementById("intimidacao-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
     document.getElementById("investigacao-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("intuicao-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
     document.getElementById("lidarcomanimais-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
     document.getElementById("medicina-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
     document.getElementById("natureza-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
@@ -436,18 +563,53 @@ function updateValue(){
 
 
 function addRaca(){
-fetch ('/fichauser', {
+    const ficha = {
+        Raca: document.getElementById("raca-span").innerText,
+        SubRaca: document.getElementById("subraca-span").innerText,
+        Nome: document.getElementById("nome-raca").value, // Exemplo de campo de input
+        FORCA: document.getElementById("forca-span").innerText,
+        CONSTITUICAO: document.getElementById("constituicao-span").innerText,
+        DESTREZA: document.getElementById("destreza-span").innerText,
+        INTELIGENCIA: document.getElementById("inteligencia-span").innerText,
+        SABEDORIA: document.getElementById("sabedoria-span").innerText,
+        CARISMA: document.getElementById("carisma-span").innerText,
+        ACROBACIA: document.getElementById("acrobacia-span").innerText,
+        ANIMAIS: document.getElementById("lidarcomanimais-span").innerText,
+        ARCANISMO: document.getElementById("arcanismo-span").innerText,
+        ATLETISMO: document.getElementById("atletismo-span").innerText,
+        ENGANACAO: document.getElementById("enganacao-span").innerText,
+        FURTIVIDADE: document.getElementById("furtividade-span").innerText,
+        HISTORIA: document.getElementById("historia-span").innerText,
+        INTIMIDACAO: document.getElementById("intimidacao-span").innerText,
+        INTUICAO: document.getElementById("intuicao-span").innerText,
+        INVESTIGACAO: document.getElementById("investigacao-span").innerText,
+        MEDICINA: document.getElementById("medicina-span").innerText,
+        NATUREZA: document.getElementById("natureza-span").innerText,
+        PERCEPCAO: document.getElementById("percepcao-span").innerText,
+        PERFORMANCE: document.getElementById("perfomance-span").innerText,
+        PERSUASAO: document.getElementById("persuasao-span").innerText,
+        PRESTIDIGITACAO: document.getElementById("prestidigitacao-span").innerText,
+        RELIGIAO: document.getElementById("religiao-span").innerText,
+        SOBREVIVENCIA: document.getElementById("sobrevivencia-span").innerText
+    };
+
+    fetch('/fichauser', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(dados)
+        body: JSON.stringify(ficha)  // Envia o objeto como JSON
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Sucesso:', data);
+    .then(response => {
+        if (response.ok) {
+            alert('Ficha criada com sucesso!');
+        } else {
+            alert('Erro ao criar ficha!');
+        }
     })
-    .catch((error) => {
-        console.log('Erro:', error);
+    .catch(error => {
+        console.error('Erro:', error);
+        alert('Erro na requisição');
     });
 }
+

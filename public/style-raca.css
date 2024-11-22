@@ -347,3 +347,8 @@ hr{
 .btnClose{
     background-color: brown;
 }
+
+.btn-return {
+    width: 24px;
+    height: 22px;
+}
