@@ -390,6 +390,34 @@ function closeModal(){
     modal.classList.remove('active')
 }
 
+function openModal(){
+    modal.classList.add('active')
+    document.getElementById("forca-span").innerText = Math.floor((forca + forcaWidth - 10) / 2);
+    document.getElementById("carisma-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("destreza-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
+    document.getElementById("sabedoria-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+    document.getElementById("inteligencia-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("constituicao-span").innerText = Math.floor((constituicao + constituicaoWidth - 10) / 2);
+    document.getElementById("arcanismo-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("atletismo-span").innerText = Math.floor((forca + forcaWidth - 10) / 2);
+    document.getElementById("enganacao-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("historia-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("intimidacao-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("investigacao-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("lidarcomanimais-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+    document.getElementById("medicina-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+    document.getElementById("natureza-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("percepcao-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+    document.getElementById("perfomance-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("persuasao-span").innerText = Math.floor((carisma + carismaWidth - 10) / 2);
+    document.getElementById("prestidigitacao-span").innerText = Math.floor((destreza + destrezaWidth - 10) / 2);
+    document.getElementById("religiao-span").innerText = Math.floor((inteligencia + inteligenciaWidth - 10) / 2);
+    document.getElementById("sobrevivencia-span").innerText = Math.floor((sabedoria + sabedoriaWidth - 10) / 2);
+}
+function closeModal(){
+    modal.classList.remove('active')
+}
+
 function updateValue(){
     const sabedoriaValue = document.querySelector('.raca-total-sabedoria')
     const forcaValue = document.querySelector('.raca-total-forca')
@@ -404,4 +432,22 @@ function updateValue(){
     carismaValue.textContent = carisma + carismaWidth;
     inteligenciaValue.textContent = inteligencia + inteligenciaWidth;
     constituicaoValue.textContent = constituicao + constituicaoWidth;
+}
+
+
+function addRaca(){
+fetch ('/fichauser', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Sucesso:', data);
+    })
+    .catch((error) => {
+        console.log('Erro:', error);
+    });
 }
