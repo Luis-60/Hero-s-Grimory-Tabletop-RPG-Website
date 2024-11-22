@@ -11,7 +11,7 @@
 <body>
     
     <div class="grid-raca"> 
-        <input type="image" src="images/anao.png" name="raca" class="raca" value="ANÃO" onclick="TrocarRaca(this)">
+        <input type="image" src="images/anao.png" name="raca" class="raca" value="ANÃO" id="default-race" onclick="TrocarRaca(this)">
         
         <input type="image" src="images/elfo.png" name="raca" class="raca" value="ELFO" onclick="TrocarRaca(this)">
         <input type="image" src="images/humano.png" name="raca" class="raca" value="HUMANO" onclick="TrocarRaca(this)">
@@ -163,7 +163,7 @@
         <h1 id="subraca">Subraças</h1>
         
         <h2 id="subraca-1">Anão da Colina</h2>
-        <input type="radio" name="subraca-radio" id="subraca-radio" value="subraca-radio">
+        <input type="radio" name="subraca-radio" id="subraca-radio">
             <p id="texto-subraca-1">Como um anão da colina, você tem sentidos aguçados,
                 maior intuição e  notável resiliência. Os anões
                 dourados de Faerûn, que vivem em seu  poderoso reino 
@@ -172,7 +172,7 @@
                 no cenário de  Dragonlance.</p>
         
         <h2 id="subraca-2">Anão da Montanha</h2>
-        <input type="radio" name="subraca-radio" id="subraca-radio2" value="subraca-radio">
+        <input type="radio" name="subraca-radio" id="subraca-radio2">
             <p id="texto-subraca-2">Como um anão da montanha, você é forte e resistente,
                 acostumados a uma  vida difícil em terrenos difíceis.
                 Você, provavelmente tem a  descendência daqueles mais
@@ -186,19 +186,52 @@
         <div class="modal">
             <h2>Info</h2>
             <hr>
-                <span>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus, 
-                    eaque possimus? Suscipit consequuntur repellendus pariatur vel! Illum 
-                    corrupti minus voluptatum nisi perspiciatis, reiciendis voluptates! 
-                    Aliquid sint id corporis et perspiciatis?
-                </span>
-            </hr>
-            <div class="btns">
-                <button class="btnOK" onclick="closeModal()">OK</button>
-                <button class="btnClose" onclick="closeModal()">FECHA ESSA MERDA</button>
+            <div class="container-raca-nome">
+                <div class="entryarea">
+                    <div class="labelline">Nome do Personagem</div>
+                    <input type="text" id="nome-raca" required>
+                </div>
             </div>
+            <p>RAÇA: <span id="raca-span"></span></p>
+            <p>SUBRAÇA: <span id="subraca-span"></span></p>
+            <p>FORÇA: <span id="forca-span"></span></p>
+            <p>CARISMA: <span id="carisma-span"></span></p>
+            <p>DESTREZA: <span id="destreza-span"></span></p>
+            <p>SABEDORIA: <span id="sabedoria-span"></span></p>
+            <p>INTELIGÊNCIA: <span id="inteligencia-span"></span></p>
+            <p>CONSTITUIÇÃO: <span id="constituicao-span"></span></p>
+            <p>ACROBACIA: <span id="acrobacia-span"></span></p>
+            <p>ARCANISMO: <span id="arcanismo-span"></span></p>
+            <p>ATLETISMO: <span id="atletismo-span"></span></p>
+            <p>ENGANAÇÃO: <span id="enganacao-span"></span></p>
+            <p>FURTIVIDADE: <span id="furtividade-span"></span></p>
+            <p>HISTÓRIA: <span id="historia-span"></span></p>
+            <p>INTIMIDAÇÃO: <span id="intimidacao-span"></span></p>
+            <p>INVESTIGAÇÃO: <span id="investigacao-span"></span></p>
+            <p>INTUIÇÃO: <span id="intuicao-span"></span></p>
+            <p>LIDAR COM ANIMAIS: <span id="lidarcomanimais-span"></span></p>
+            <p>MEDICINA: <span id="medicina-span"></span></p>
+            <p>NATUREZA: <span id="natureza-span"></span></p>
+            <p>PERCEPÇÃO: <span id="percepcao-span"></span></p>
+            <p>PERFORMANCE: <span id="perfomance-span"></span></p>
+            <p>PERSUASÃO: <span id="persuasao-span"></span></p>
+            <p>PRESTIDIGITAÇÃO: <span id="prestidigitacao-span"></span></p>
+            <p>RELIGIÃO: <span id="religiao-span"></span></p>
+            <p>SOBREVIVÊNCIA: <span id="sobrevivencia-span"></span></p>
+            <div class="btns">
+                <button class="btnAddRaca" onclick="addRaca()">OK</button>
+                <button class="btnClose" onclick="closeModal()">SAIR</button>
+
+            </div>
+            
         </div>
+        
     </div>
+    <a href="index.html"> 
+        <button class="Return">
+            <img src="images/return-icon.png" class="btn-return" alt="Return Icon">
+        </button>
+    </a>
 <script src="raca.js"></script>
 </body>
 </html>

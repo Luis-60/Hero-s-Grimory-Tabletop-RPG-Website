@@ -2,43 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seu Perfil</title>
+    <title>Heros's Grimory | Perfil</title>
+    <!---external css ---->
     <link rel="stylesheet" href="style-usuario.css">
-    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Asap:wght@400;700&display=swap" rel="stylesheet">
+    <!---font awesome cdn for font icons---->
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
 </head>
 <body>
-        <header>
-            <nav class="nav">
-                <div class="logo">
-                    <a href="index.html">
-                        <img src="images/logo.png" alt="Hero's Grimory Logo">
+    <header>
+        <nav class="nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Hero's Grimory Logo">
 
-                    </a>
-                    <div id="mainListDiv" class="main_list">
-                        <ul>
-                            <li>Perfil</li>
-                            <li>Fichas</li>
-                        </ul>
-                        <span class="navTrigger">
-                            <i></i>
-                            <i></i>
-                            <i></i>
-                        </span>
-                        
-                    </div>
+                </a>
+                <div id="mainListDiv" class="main_list">
+                    <ul>
+                        <li>Perfil</li>
+                        <li>Fichas</li>
+                    </ul>
+                    <span class="navTrigger">
+                        <i></i>
+                        <i></i>
+                        <i></i>
+                    </span>
+                    
                 </div>
-            
-            </nav>
-        </header>
-        <main id="container">
-            <div class="text1">Email:</div>
-            <div class="email">pedro@exemplo.com</div>
-            <div class="text2">senha:</div>
-            <div class="senha"></div>
-            <button class="trocar-senha">Trocar Senha</button>
-        </main>
+            </div>
+        </nav>
+    </header>
+   <div class="container">
+       <div class="profile-card"> 
+            <div class="profile-pic">
+                <img class="user"src="images/user.jpg" alt="user avatar">
+            </div>
+   
+            <div class="profile-details">
+                 <div class="intro">
+                    <h2 id="nome">User</h2>
+                    <h4>RPG Player</h4>
+                    <div class="social">
+                        <a href="#"><i class="fab fa-facebook" style="color:var(--blue)"></i></a>
+                        <a href="#"><i class="fab fa-twitter"  style="color:var(--skyblue)"></i></a>
+                        <a href="#"><i class="fab fa-instagram"  style="color:var(--dark-pink)"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"  style="color:var(--light-blue)"></i></a>
+                    </div>
+                 </div>
+
+                 <div class="contact-info">
+                    <div class="row">
+                        <div class="icon">
+                           <i class="fa fa-envelope-open"  style="color:var(--light-green)"></i>
+                        </div>
+                        <div class="content">
+                           <span>Email</span>
+                           <h5 id="email">exaple@gmail.com</h5>
+                        </div>
+                   </div>
+                  
+            </div>
+            <button id="btn-sair" onclick="sair()">SAIR</button>
+            </div>
+    
+       </div>
+
+       <!----about section ----->
+       <div class="about">
+           <h1>Sobre mim</h1>
+
+           <textarea id="aboutMeInput" class="about-editable" style="display:none;"></textarea>
+           <p id="aboutMeText">
+              
+           </p>
+           
+           <!-- Botões para alternar entre editar e salvar -->
+           <button id="editButton" onclick="editAboutMe()">Editar</button>
+           <button id="saveButton" style="display:none;" onclick="saveAboutMe()">Salvar</button>
+       
+          <h2>Personagens Criados</h2>
+          <div class="work">
+             <div class="workbox">
+                 <div class="icon">
+                    <img src="images/ui.svg" alt="">
+                 </div>
+                 <div class="desc">
+                    <h3>MARIA</h3>
+                    <p></p>
+                 </div>
+             </div>
+             
+
+             <div class="workbox">
+                <div class="icon">
+                   <img src="images/app.svg" alt="">
+                </div>
+                <div class="desc">
+                   <h3><a href="ficha.html" onclick="gerarFicha()" id="nomeFicha"></a></h3>
+                   <p id="descricao"></p>
+                </div>
+            </div>
+
+            <div class="workbox">
+                <div class="icon">
+                   <img src="images/api.svg" alt="">
+                </div>
+                <div class="desc">
+                   <h3>LUCAS</h3>
+                   <p></p>
+                </div>
+            </div>
+
+            <div class="workbox">
+                <div class="icon">
+                   <img src="images/web.svg" alt="">
+                </div>
+                <div class="desc">
+                   <h3>JORGE</h3>
+                   <p></p>
+                </div>
+            </div>
+          </div>
+       </div>
+       
+   </div>
+</div>
+   <script src="perfil.js"></script>
 </body>
 </html>
