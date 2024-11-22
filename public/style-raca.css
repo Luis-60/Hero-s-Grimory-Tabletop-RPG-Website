@@ -250,7 +250,7 @@ p {
     justify-content: space-evenly;
     gap: 62px;
     top: 7%;
-    left: -41.8%;
+    left: -42.7%;
     pointer-events: none;
 }
 
@@ -312,7 +312,7 @@ hr{
     display: flex;
     flex-direction: column;
     padding: 30px;
-    background-color: white;
+    background-color: rgb(131, 94, 94);
     border-radius: 10px;
     width: 50%
 }
@@ -346,4 +346,9 @@ hr{
 
 .btnClose{
     background-color: brown;
+}
+
+.btn-return {
+    width: 24px;
+    height: 22px;
 }
