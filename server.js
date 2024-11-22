@@ -19,8 +19,8 @@ app.use(session({
 const pool = new Pool ({
     user: 'postgres',
     host: '127.0.0.1',
-    database:'Hero-Grimory',
-    password: '31201013',
+    database:'postgres',
+    password: '123',
     port: 5432,
 });
 
@@ -60,23 +60,89 @@ app.get('/dados.html', (req, res) =>{
 });
 
 // inserção no banco de dados
-app.post('/submit', async (req, res) => {
-    const { nome, email, senha } = req.body;
+app.post('/fichauser', async (req, res) => {
+    const id_Usuario = req.session.login
+    const {
+        Raca,
+        SubRaca,
+        Nome,
+        FORCA,
+        CONSTITUICAO,
+        DESTREZA,
+        INTELIGENCIA,
+        SABEDORIA,
+        CARISMA,
+        ACROBACIA,
+        ANIMAIS,
+        ARCANISMO,
+        ATLETISMO,
+        ENGANACAO,
+        FURTIVIDADE,
+        HISTORIA,
+        INTIMIDACAO,
+        INTUICAO,
+        INVESTIGACAO,
+        MEDICINA,
+        NATUREZA,
+        PERCEPCAO,
+        PERFORMANCE,
+        PERSUASAO,
+        PRESTIDIGITACAO,
+        RELIGIAO,
+        SOBREVIVENCIA
+    } = req.body;
 
-    // Verificar se o nome, email e senha estão preenchidos
-    if (!nome || !email || !senha) {
-        return res.status(400).json({ message: 'Dados inválidos! Nome, email e senha são obrigatórios.' });
+    // Verifica se todos os campos obrigatórios estão preenchidos
+    if (
+        !id_Usuario || !Raca || !SubRaca || !Nome ||
+        !FORCA || !CONSTITUICAO || !DESTREZA ||
+        !INTELIGENCIA || !SABEDORIA || !CARISMA ||
+        !ACROBACIA || !ANIMAIS || !ARCANISMO || !ATLETISMO ||
+        !ENGANACAO || !FURTIVIDADE || !HISTORIA ||
+        !INTIMIDACAO || !INTUICAO || !INVESTIGACAO ||
+        !MEDICINA || !NATUREZA || !PERCEPCAO ||
+        !PERFORMANCE || !PERSUASAO || !PRESTIDIGITACAO ||
+        !RELIGIAO || !SOBREVIVENCIA
+    ) {
+        return res.status(400).json({ message: 'Todos os campos são obrigatórios!' });
     }
 
     try {
-        const result = await pool.query(
-            'INSERT INTO Usuarios(Nome, Email, Senha) VALUES ($1, $2, $3)',
-            [nome, email, senha]
-        );
-        res.status(200).send('Dados inseridos com sucesso');
+        // Insere a ficha na tabela
+        const query = `
+            INSERT INTO Fichas (
+                id_Usuario, Raca, SubRaca, Nome,
+                FORCA, CONSTITUICAO, DESTREZA, INTELIGENCIA,
+                SABEDORIA, CARISMA, ACROBACIA, ANIMAIS,
+                ARCANISMO, ATLETISMO, ENGANACAO, FURTIVIDADE,
+                HISTORIA, INTIMIDACAO, INTUICAO, INVESTIGACAO,
+                MEDICINA, NATUREZA, PERCEPCAO, PERFORMANCE,
+                PERSUASAO, PRESTIDIGITACAO, RELIGIAO, SOBREVIVENCIA
+            ) VALUES (
+                $1, $2, $3, $4,
+                $5, $6, $7, $8,
+                $9, $10, $11, $12,
+                $13, $14, $15, $16,
+                $17, $18, $19, $20,
+                $21, $22, $23, $24,
+                $25, $26, $27, $28
+            )
+        `;
+        const values = [
+            id_Usuario, Raca, SubRaca, Nome,
+            FORCA, CONSTITUICAO, DESTREZA, INTELIGENCIA,
+            SABEDORIA, CARISMA, ACROBACIA, ANIMAIS,
+            ARCANISMO, ATLETISMO, ENGANACAO, FURTIVIDADE,
+            HISTORIA, INTIMIDACAO, INTUICAO, INVESTIGACAO,
+            MEDICINA, NATUREZA, PERCEPCAO, PERFORMANCE,
+            PERSUASAO, PRESTIDIGITACAO, RELIGIAO, SOBREVIVENCIA
+        ];
+
+        await pool.query(query, values);
+        res.status(200).send('Ficha criada com sucesso!');
     } catch (err) {
-        console.error('Erro ao inserir dados', err);
-        res.status(500).send('Erro ao inserir dados');
+        console.error('Erro ao criar ficha:', err);
+        res.status(500).send('Erro ao criar ficha');
     }
 });
 
@@ -141,18 +207,21 @@ app.get('/perfil', async (req, res) =>{
 
     try {
         const result = await pool.query(
-            'select email, senha from usuarios Where id_usuario = $1',
+            'select nome, email, senha from usuarios Where id_usuario = $1',
             [idUsuario]
         );
         const usuario = result.rows[0];
+        const nome = usuario.nome;
         const email = usuario.email; 
-        const senha = usuario.senha
-    
+        const senha = usuario.senha;
+        
+        
 
         res.status(200).json({
             status: "sucesso",
             message: 'Login realizado com sucesso',
             usuario: {
+                nome: nome,
                 email: email,
                 senha: senha
             }
@@ -163,6 +232,19 @@ app.get('/perfil', async (req, res) =>{
         res.status(500).send('Erro ao consultar dados');
     }
 })
+app.get('/sair', (req, res) => {
+    req.session.destroy((err) => {
+        if (err) {
+            console.log('Errei fui moleque')
+            return res.status(500).json({ status: "erro", mensagem: "Erro ao encerrar a sessão" });
+        }
+        console.log('Acertemos garai')
+        res.status(200).json({ status: "sucesso" });
+    });
+});
+
+
+// Adicionar Raças
 
 
 app.listen(port, () => {
