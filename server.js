@@ -20,7 +20,7 @@ const pool = new Pool ({
     user: 'postgres',
     host: '127.0.0.1',
     database:'postgres',
-    password: '123',
+    password: '1234',
     port: 5432,
 });
 
@@ -146,6 +146,24 @@ app.post('/fichauser', async (req, res) => {
     }
 });
 
+app.post('/submit', async (req, res) => {
+    const { nome, email, senha } = req.body;
+    // Verificar se o nome, email e senha estão preenchidos
+    if (!nome || !email || !senha) {
+        return res.status(400).json({ message: 'Dados inválidos! Nome, email e senha são obrigatórios.' });
+    }
+    try {
+        const result = await pool.query(
+            'INSERT INTO Usuarios(Nome, Email, Senha) VALUES ($1, $2, $3)',
+            [nome, email, senha]
+        );
+        res.status(200).send('Dados inseridos com sucesso');
+    } catch (err) {
+        console.error('Erro ao inserir dados', err);
+        res.status(500).send('Erro ao inserir dados');
+    }
+});
+
 // Validação de login
 app.post('/login', async (req, res) => {
     const { nome, senha } = req.body;
@@ -183,6 +201,7 @@ app.post('/login', async (req, res) => {
         res.status(500).send('Erro ao realizar login');
     }
 });
+
 app.get('/verificar-sessao', (req, res) => {
     if (req.session.login) {
         res.status(200).json({ logado: true, nome: req.session.nomeUsuario });
@@ -200,6 +219,85 @@ app.get('/usuario-nome', (req, res) => {
 
     const nomeUsuario = req.session.name; // Acessando o nome do usuário da sessão
     res.status(200).json({ nome: nomeUsuario });
+});
+app.get('/gerarFicha', async (req, res) => {
+    const id_Usuario = req.session.login;
+
+    try{
+        const result = await pool.query(
+            'select * from fichas where id_usuario = $1',
+            [id_Usuario]
+        );
+       
+        const ficha = result.rows[0];
+        const raca = ficha.raca;
+        const subraca = ficha.subraca;
+        const nome = ficha.nome;
+        const forca = ficha.forca;
+        const constituicao = ficha.constituicao;
+        const destreza = ficha.destreza;
+        const inteligencia = ficha.inteligencia;
+        const sabedoria = ficha.sabedoria;
+        const carisma = ficha.carisma;
+        const acrobacia = ficha.acrobacia;
+        const animais = ficha.animais;
+        const arcanismo = ficha.arcanismo;
+        const atletismo = ficha.atletismo;
+        const enganacao = ficha.enganacao;
+        const furtividade = ficha.furtividade;
+        const historia = ficha.historia;
+        const intimidacao = ficha.intimidacao;
+        const intuicao = ficha.intuicao;
+        const investigacao = ficha.investigacao;
+        const medicina = ficha.medicina;
+        const natureza = ficha.natureza;
+        const percepcao = ficha.percepcao;
+        const performance = ficha.performance;
+        const persuasao = ficha.persuasao;
+        const prestidigitacao = ficha.prestidigitacao;
+        const religiao = ficha.religiao;
+        const sobrevivencia = ficha.sobrevivencia;
+
+    
+
+        res.status(200).json({
+            status: "sucesso",
+            message: "Dados da ficha",
+            ficha: {
+            raca: raca,
+            subraca: subraca,
+            nome: nome,
+            forca: forca,
+            constituicao: constituicao,
+            destreza: destreza,
+            inteligencia: inteligencia,
+            sabedoria: sabedoria,
+            carisma: carisma,
+            acrobacia: acrobacia,
+            animais: animais,
+            arcanismo: arcanismo,
+            atletismo: atletismo,
+            enganacao: enganacao,
+            furtividade: furtividade,
+            historia: historia,
+            intimidacao: intimidacao,
+            intuicao: intuicao,
+            investigacao: investigacao,
+            medicina: medicina,
+            natureza: natureza,
+            percepcao: percepcao,
+            performance: performance,
+            persuasao: persuasao,
+            prestidigitação: prestidigitacao,
+            religiao: religiao,
+            sobrevivencia: sobrevivencia
+            }
+        });
+
+    } catch (err) {
+        console.error('Erro ao consultar', err);
+        res.status(500).send('Erro ao consultar dados');
+    }
 });
 
 app.get('/perfil', async (req, res) =>{
@@ -231,14 +329,12 @@ app.get('/perfil', async (req, res) =>{
         console.error('Erro ao consultar', err);
         res.status(500).send('Erro ao consultar dados');
     }
-})
+});
 app.get('/sair', (req, res) => {
     req.session.destroy((err) => {
         if (err) {
-            console.log('Errei fui moleque')
             return res.status(500).json({ status: "erro", mensagem: "Erro ao encerrar a sessão" });
         }
-        console.log('Acertemos garai')
         res.status(200).json({ status: "sucesso" });
     });
 });
